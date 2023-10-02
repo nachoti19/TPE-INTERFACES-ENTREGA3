@@ -9,6 +9,15 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
 /*MOBILE FIRST INICIO*/
 h2 {
     font-size: 22px;
@@ -16,6 +25,7 @@ h2 {
 
 h3 {
     font-size: 16px;
+    margin: 10px;
 }
 
 span {
@@ -77,6 +87,7 @@ nav {
     height: 100%;
     background-color: #CB3939;
     border: none;
+    margin-right: 20px;
 }
 
 .icono-hamburguesa {
@@ -91,6 +102,79 @@ nav {
     padding-left: 10px;
     color: #ffffff;
     margin-right: 65px;
+}
+
+
+
+
+
+
+
+
+/* HAMBURGUESA */
+.menu-hamburguesa {
+    background-color: #CB3939;
+    width: 80%;
+    max-width: 400px;
+    height: 100vh;
+    position: fixed;
+    right: 0%;
+    top: 0%;
+}
+
+.fondo-hamburguesa>button {
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    margin-top: 22px;
+    margin-right: 30px;
+    border: none;
+    background: none;
+}
+
+.hide {
+    display: none;
+}
+
+.fondo-hamburguesa {
+    width: 100%;
+    height: 300px;
+    background-image: url("images/tc2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    gap: 10px;
+    
+
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.contenedor1-hamburguesa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pfp-hamburguesa {
+    width: 40%;
+}
+
+.nombre-usuario {
+    font-size: 22px;
+}
+
+.en-linea {
+    margin-top: 5px;
+    color: #3ABA38;
+}
+
+.contenedor2-hamburguesa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
 
 
@@ -131,7 +215,7 @@ nav {
 
 /*Seccion Ofertas*/
 .ofertas{
-    margin-top: 5rem;
+    margin-top: 0.5rem;
     padding: 1rem;
     width: 100%;
     height: 34.813rem;
@@ -142,6 +226,10 @@ nav {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.tituloOf {
+    margin: 15px;
 }
 
 .cardOf{
@@ -211,6 +299,7 @@ nav {
 /* CUERPO DE LA PÁGINA */
 body {
     background-color: #161616;
+    width: 100%;
 }
 
 main {
@@ -219,14 +308,24 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 200px;
 }
 
 .contenedor-categoria {
     width: 100%;
     margin-top: 50px;
     padding: 10px;
-    /* background-color: rgb(167, 100, 72); */
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: right;
+
     box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
+    box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
+}
+
+.contenedor-categoria>h3 {
+    margin-left: 27px;
 }
 
 .contenedor-auxiliar {
@@ -306,9 +405,7 @@ main {
 }
 
 .ver-mas {
-    margin: 6px;
-
-
+    margin: 6px 50px;
     background-color:transparent;
 	border-radius:8px;
 	border:3px solid #ffffff;
@@ -316,7 +413,7 @@ main {
 	cursor:pointer;
 	color:#ffffff;
 	font-size:15px;
-	padding:8px 28px;
+	padding:5px 22px;
 	text-decoration:none;
 }
 
@@ -328,7 +425,6 @@ main {
 
 /*FOOTER*/
 footer{
-    margin-top: 200px;
     width: 100%;
     height: 100%;
     background: linear-gradient(rgba(203,57,57,0.75), rgba(203,57,57,0.75)), url("images/fondo_footer.png");
@@ -365,7 +461,7 @@ footer div div ul{
     margin-left: 10px;
 }
 
-footer div div .contenedorLista, p {
+footer div div .contenedorLista{
     margin-top: 10px;
 }
 
@@ -384,15 +480,11 @@ footer .soporte ul li, .navegacion ul li{
     text-align: justify;
 }
 
-.contenedor-footer{
-
-}
-
 /*MOBILE FIRST FIN*/
 
 /*DESKTOP*/
 
-@media (min-width: 900px) {
+@media (min-width: 900px) {}
 
 /*NAVBAR*/
     nav{
@@ -418,10 +510,10 @@ footer .soporte ul li, .navegacion ul li{
     .buscar-input {
         border-radius: 12px;
         height: 30px;
-        opacity: 0.45;
+        /* opacity: 0.45; */
         width: 500px;
         padding-left: 10px;
-        color: #ffffff;
+        /* color: #ffffff; */
         margin-right: 0px;
     }
 
@@ -449,23 +541,6 @@ footer .soporte ul li, .navegacion ul li{
 }
 
 /*JUGADOS RECIENTEMENTE*/
-
-.contenedor-categoria {
-    width: 100%;
-    margin-top: 50px;
-    padding: 10px;
-    /* background-color: rgb(167, 100, 72); */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: right;
-    box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
-}
-
-/*.contenedor-categoria h3{
-    margin-left: 10rem;
-}*/
-
 .contenedor-auxiliar {
     width: 88%;
     display: flex;
@@ -533,7 +608,7 @@ footer .soporte ul li, .navegacion ul li{
 
 footer{
     width: 100%;
-    height: 500px;
+    height: 350px;
     padding: 1rem;
     
 }
@@ -542,16 +617,20 @@ footer{
     display: flex;
     flex-direction: row;
     align-items: start;
-    margin-left: 15rem;
+    margin-left: 27rem;
 }
 
 .contenedor-footer{
     flex-direction: row;
 }
 
+footer li{
+    font-size: 12px;
+}
+
 .derechos-reservados{
     width: 100%;
-    height: 310px;
+    height: 160px;
     font-size: 13px;
     text-align: justify;
     display: flex;
@@ -560,8 +639,9 @@ footer{
 }
 
 footer .contenedor-footer div ul div img{
-    width: 30px;
+    width: 20px;
     height: auto;
+    margin-right: 6px;
 }
 
 .contenedorLista{
@@ -571,11 +651,11 @@ footer .contenedor-footer div ul div img{
 }
 
 footer .contenedor-footer img{
-    width: 20%;
-    height: auto;
+    width: 10%;
+    height: 10%;
 }
 
-footer  .contenedorLista, p {
+footer  .contenedorLista{
     margin-top: 10px;
 }
 
@@ -588,5 +668,297 @@ footer  .soporte ul li, .navegacion ul li{
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+
+
+
+/* LOGIN */
+.main-body {
+    background-image: url("images/fondo_login.png");
+    background-size: cover;
+    background-position: sticky;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+/*PAGINA JUEGO*/
+
+/*PANTALLA JUEGO*/
+.contenedor-juego{
+    margin-top: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    height: auto;
+    background-image: url("images/assetto_corsa.jpg");
+    background-position: 50% 0%;
+    background-position: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
+    position: relative;
+}
+
+.pantalla-juego{
+    background-image: url("images/portadajuego2.png");
+    background-position: center;
+    background-size: cover;
+    margin-right: 100px;
+    height: 935px;
+    width: 935px;
+}
+
+.contenedor-controles{
+    width: 400px;
+    height: auto;
+}
+
+.imagen-juego{
+    background-image: url("images/portadajuego2.png");
+    width: auto;
+    height: 400px;
+    background-position: center;
+    background-size: cover;
+    margin-bottom:30px;
+}
+
+.controles-juego{
+    height: 505px;
+    width: auto;
+    background-color: blue;
+}
+
+/*INFORMACION JUEGO*/
+
+.contenedor-informacion{
+    padding: 10px;
+    width: 50%;
+    height: auto;
+    background-image: url("images/41394.jpg");
+    box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.contenerdor-sub-info1{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+
+.contenedor-informacion p{
+    font-size: 20px;
+}
+
+.contenedor-sub-categoria1, .contenedor-sub-categoria2{
+    display: flex;
+    flex-direction: row;
+}
+
+.cuadro-categoria{
+    width: 170px;
+    height: 55px;
+    background-color: #A05858;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 6px;
+    border-radius: 7px;
+}
+
+.icono{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    background-color: green;
+    margin-right: 10px;
+    margin-left:10px;
+}
+
+.clasico{
+    background-image: url("images/images\ \(1\).png");
+    background-position: center;
+    background-size: 110%;
+}
+
+.arcade{
+    background-image: url("images/images.png");
+    background-position: center;
+    background-size: 100%;
+}
+
+.gratis{
+    background-image: url("images/png-clipart-dollar-sign-illustration-united-states-dollar-icon-design-icon-dollar-sign-text-logo-thumbnail.png");
+    background-position: center;
+    background-size: 130%;
+}
+
+.casual{
+    background-image: url("images/pop-corn-flat-icon-vector-7978872.jpg");
+    background-position: center;
+    background-size: 130% 60px;
+}
+
+.contenedor-informacion h2{
+    margin-bottom: 10px;
+}
+
+.contenedor-sub-info2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contenedor-info p{
+    margin-top: 10px;
+}
+
+.compartir{
+    margin-top:10px;
+}
+
+.video{
+    width: 30%;
+    height: auto;
+}
+
+.compartir{
+    width: 160px;
+    height: 40px;
+    background-color: #A05858;
+    border: none;
+    border-radius: 10px;
+}
+
+/*COMENTARIOS-FOROS*/
+
+.contenedor-social{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.comentarios{
+    width: 580px;
+    display: flex;
+    flex-direction: column;
+    background-color: #4b4b4b6f;
+    border-style: solid;
+    border-color: #A05858;
+    margin-right: 74px;
+}
+
+.comentarios h2{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.escribir-comentario{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-color: white;
+    border-style: none none solid none;
+    border-width: 2px;
+}
+
+.icono-comentario{
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    border-color: white;
+    border-style: solid;
+    border-width: 1px;
+    background-image: url("images/308d795c3cac0f8f16610f53df4e1005.jpg");
+    background-position: center;
+    background-size: 100%;
+    margin: 20px;
+}
+
+.escribir-comentario .icono-comentario{
+    margin-top: 15px;
+}
+
+.escribir-comentario p, .nombre{
+    color: rgba(255, 255, 255, 0.604);
+}
+
+.comentarios-generales{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.foro{
+    display: flex;
+    flex-direction: column;
+    border-color: #A05858;
+    border-style: solid;
+}
+
+.comunidad{
+    display: flex;
+    align-items: center;
+    border-color: white;
+    border-style: none none solid none;
+    border-width: 2px;
+    height: 49px;
+}
+
+.comunidad-rosa, .comunidad-negro{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 300px;
+}
+
+.comunidad-rosa{
+    background-color: #E96F6F;
+}
+
+.comunidad-negro{
+    background-color: #B75555;
+}
+
+
+
+/* MEDIA QUERIES */
+@media screen and (min-width:500px) {
+
+    h3 {
+        font-size: 30px;
+    }
+
+
+    /* HAMBURGUESA */
+    .contenedor2-hamburguesa {
+        gap: 20px;
+    }
+
+    .contenedor2-hamburguesa>a {
+       font-size: 20px;
+    }
+
+
+    /* CARRUSELES */
+    .card-juego {
+        margin-left: 30px;
+    }
+
+    .contenedor-categoria>h3 {
+        margin-left: 110px;
+    }
+
 
 }

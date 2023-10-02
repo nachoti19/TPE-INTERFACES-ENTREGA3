@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="styles.css" type="text/css">
 
     <title>Racer Games</title>
@@ -27,7 +28,7 @@
 
         <a href="#" class="carrito"><img src="images/icono_carrito.png" alt="" class="carrito"></a>
 
-        <button class="hamburguesa">
+        <button class="hamburguesa" id="abrir-hamburguesa">
             <img src="images/icono_perfil.png" class="icono-hamburguesa">
         </button>
         </div>
@@ -35,8 +36,35 @@
 
     <main>
 
+        <div class="menu-hamburguesa hide" id="hamburguesa">
+
+            <div class="fondo-hamburguesa">
+                <button id="cerrar-hamburguesa">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+
+                <img src="images/icono_perfil.png" class="pfp-hamburguesa">
+
+                <div class="contenedor1-hamburguesa">
+                    <p class="nombre-usuario">JuanPiloto55</p>
+                    <p class="en-linea">en línea</p>
+                </div>
+            </div>
+
+            <div class="contenedor2-hamburguesa">
+                <a href="">Ver perfil</a>
+                <a href="">Mis reseñas</a>
+                <a href="">Lista de deseados</a>
+                <a href="">Historial de compras</a>
+                <a href="">Ayuda</a>
+            </div>
+
+            
+
+        </div>
+
         <div class="contenedor-nuevos-lanzamientos">
-            <h2>Nuevos lanzamientos</h2>
+            <h3>Nuevos lanzamientos</h3>
             <div class="card-nuevos-lanzamientos">
                 
             </div>
@@ -47,11 +75,13 @@
             <h3>Jugados recientemente (últimos treinta días)</h3>
             <div class="contenedor-auxiliar">
                 <div class="card-juego">
-                    <img class="card-portada" src="images/portadajuego2.png" alt="Portada">
-                    <div class="card-info">
+                    <a href="Juego.html"><img class="card-portada" src="images/portadajuego2.png" alt="Portada">
+                    </a>
+                        <div class="card-info">
                         <p><span class="opacidad-40">TIEMPO JUGADO</span> 112 horas</p>
                         <p><span class="opacidad-40">ÚLTIMA SESIÓN</span> 18/09</p>
                     </div>
+
                 </div>
 
                 <div class="card-juego">
@@ -84,8 +114,9 @@
             </div>
 
         </div>
-        <h3 class="TituloOf">Ofertas Especiales</h3>
-        <div class="ofertas">
+        
+        <section class="ofertas">
+            <h3 class="tituloOf">Ofertas Especiales</h3>
             <div class="cardOf">
                 <div class="PrecioOf">
                     <p class="textOf">la oferta termina el 28 de octubre a las 14:00hs</p>
@@ -119,7 +150,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
     <div class="contenedor-categoria recomendados">
 
@@ -639,6 +670,9 @@
             </div>
         
     </footer>
+
+    <script src="script.js"></script>
+
 </body>
 
 </html>
