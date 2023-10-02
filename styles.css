@@ -40,11 +40,33 @@ nav {
     align-items: center;
     padding: 8px 15px;
     position: fixed;
-
-
     box-shadow: -1px 9px 37px 8px rgba(0,0,0,0.75);
     -webkit-box-shadow: -1px 9px 37px 8px rgba(0,0,0,0.75);
     -moz-box-shadow: -1px 9px 37px 8px rgba(0,0,0,0.75);
+}
+
+.contenedor-nav{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content:right;
+    align-items: center;
+    padding: 8px 0px;
+    position: inherit;
+    right: 15px;
+    z-index: -1;
+}
+
+.carrito{
+    display: none;
+}
+
+.btn-biblioteca{
+    display: none;
+}
+
+.btn-categoria{
+    display: none;
 }
 
 .pag-logo {
@@ -68,6 +90,7 @@ nav {
     width: 60%;
     padding-left: 10px;
     color: #ffffff;
+    margin-right: 65px;
 }
 
 
@@ -78,13 +101,16 @@ nav {
 
 .contenedor-nuevos-lanzamientos {
     width: 90%;
-    height: 350px;
     margin-top: 100px;
-    background-color: rgb(167, 100, 72);
 }
 
 .card-nuevos-lanzamientos {
-    height: 180px;
+    height: 200px;
+    background-image: url("images/f1_23.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
 }
 
 .img-card-nl {
@@ -111,6 +137,7 @@ nav {
     height: 34.813rem;
     background-image:  url("images/fondo_ofertas.png");
     background-position: 50% 0%;
+    background-position: center right;
     box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
     display: flex;
     flex-direction: column;
@@ -127,6 +154,13 @@ nav {
     background-position: center;
     display: flex;
     align-items: end;
+}
+
+.contenedor-nombre{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .PrecioOf{
@@ -162,7 +196,7 @@ nav {
 
 }
 
-.cardOf .PrecioOf .contenedor-precio p{
+.cardOf .PrecioOf div .contenedor-precio p{
     margin: 0px;
     font-size: 12px;
     text-decoration:line-through;
@@ -181,7 +215,7 @@ body {
 
 main {
     width: 100%;
-    height: 2000px;
+    height: auto;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -192,8 +226,6 @@ main {
     margin-top: 50px;
     padding: 10px;
     /* background-color: rgb(167, 100, 72); */
-
-
     box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
 }
 
@@ -296,16 +328,23 @@ main {
 
 /*FOOTER*/
 footer{
-    margin-top: 600px;
+    margin-top: 200px;
     width: 100%;
-    height: auto;
+    height: 100%;
     background: linear-gradient(rgba(203,57,57,0.75), rgba(203,57,57,0.75)), url("images/fondo_footer.png");
+    background-position: center right;
     background-repeat: no-repeat;
     background-size: 100% 100%; /* ahí se ve bien en escritorio, pero en celular ni se ve */
     padding: 1rem;
 }
 
-footer div div ul div img{
+.contenedor-footer{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+}
+
+footer div ul div img{
     width: 30px;
     height: auto;
 }
@@ -321,12 +360,12 @@ footer div img{
     height: auto;
 }
 
-footer div ul{
+footer div div ul{
     list-style-type: none;
-    margin-left: 0px;
+    margin-left: 10px;
 }
 
-footer div .contenedorLista, p {
+footer div div .contenedorLista, p {
     margin-top: 10px;
 }
 
@@ -335,7 +374,7 @@ footer p{
 }
 
 
-footer div .soporte ul li, .navegacion ul li{
+footer .soporte ul li, .navegacion ul li{
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -346,9 +385,208 @@ footer div .soporte ul li, .navegacion ul li{
 }
 
 .contenedor-footer{
-    display: flex;
-    align-items: left;
-    flex-direction: column;
+
 }
 
 /*MOBILE FIRST FIN*/
+
+/*DESKTOP*/
+
+@media (min-width: 900px) {
+
+/*NAVBAR*/
+    nav{
+        position: static;
+    }
+
+    .pag-logo {
+        margin-right: 10rem;
+    }
+
+    .contenedor-nav{
+        width: auto;
+        height: 60px;
+        display: flex;
+        justify-content:right;
+        align-items: center;
+        padding: 8px 0px;
+        position: none;
+        right: 0px;
+        z-index: 0;
+    }
+
+    .buscar-input {
+        border-radius: 12px;
+        height: 30px;
+        opacity: 0.45;
+        width: 500px;
+        padding-left: 10px;
+        color: #ffffff;
+        margin-right: 0px;
+    }
+
+    .btn-biblioteca, .btn-categoria{
+        margin-left: 15px;
+        display: block;
+    }
+
+    .carrito{
+        margin-left: 15px;
+        margin-right: 15px;
+        display: block;
+        height: 95%;
+    }
+
+
+/*NUEVOS LANZAMIENTOS*/
+
+.contenedor-nuevos-lanzamientos {
+    width: 60%;
+}
+
+.card-nuevos-lanzamientos {
+    height: 400px;
+}
+
+/*JUGADOS RECIENTEMENTE*/
+
+.contenedor-categoria {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px;
+    /* background-color: rgb(167, 100, 72); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: right;
+    box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
+}
+
+/*.contenedor-categoria h3{
+    margin-left: 10rem;
+}*/
+
+.contenedor-auxiliar {
+    width: 88%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    overflow-x: scroll;
+    margin: auto;
+}
+
+.contenedor-boton {
+    margin-right: 500px;
+}
+
+/*OFERTAS ESPECIALES*/
+
+.ofertas{
+    flex-direction: row;
+    justify-content: center;
+}
+
+.cardOf{
+    width: 20%;
+    height: 27rem;
+    margin-bottom: 3rem;
+    margin: 15px;
+}
+
+.PrecioOf{
+    height: 6rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.cardOf .PrecioOf .textOf{
+    font-size: 12px;
+}
+
+.cardOf .PrecioOf div p{
+    margin: 0.5rem;
+    font-size:45px;
+    height:auto;
+}
+
+.contenedor-nombre{
+    justify-content: space-between;
+}
+
+.contenedor-precio{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: end;
+}
+
+.cardOf .PrecioOf div .contenedor-precio p{
+    font-size: 16px;
+}
+
+.cardOf .PrecioOf .contenedor-precio .precio{
+    font-size: 30px;
+}
+
+/*FOOTER*/
+
+footer{
+    width: 100%;
+    height: 500px;
+    padding: 1rem;
+    
+}
+
+.contenedor-redes{
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    margin-left: 15rem;
+}
+
+.contenedor-footer{
+    flex-direction: row;
+}
+
+.derechos-reservados{
+    width: 100%;
+    height: 310px;
+    font-size: 13px;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+footer .contenedor-footer div ul div img{
+    width: 30px;
+    height: auto;
+}
+
+.contenedorLista{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+footer .contenedor-footer img{
+    width: 20%;
+    height: auto;
+}
+
+footer  .contenedorLista, p {
+    margin-top: 10px;
+}
+
+footer .derechos-reservados p{
+    color: rgba(255, 255, 255, 0.604);
+}
+
+
+footer  .soporte ul li, .navegacion ul li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+}
