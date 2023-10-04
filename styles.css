@@ -308,7 +308,7 @@ main {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 }
 
 .contenedor-categoria {
@@ -697,12 +697,16 @@ footer  .soporte ul li, .navegacion ul li{
     background-image: url("images/assetto_corsa.jpg");
     background-position: 50% 0%;
     background-position: center;
+    box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
+}
+
+.contenedor-pantalla{
+    width: 100%;
+    height: 80%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: start;
-    box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
-    position: relative;
 }
 
 .pantalla-juego{
@@ -711,7 +715,7 @@ footer  .soporte ul li, .navegacion ul li{
     background-size: cover;
     margin-right: 100px;
     height: 935px;
-    width: 935px;
+    width: 849px;
 }
 
 .contenedor-controles{
@@ -738,7 +742,7 @@ footer  .soporte ul li, .navegacion ul li{
 
 .contenedor-informacion{
     padding: 10px;
-    width: 50%;
+    width: 70%;
     height: auto;
     background-image: url("images/41394.jpg");
     box-shadow: 0px 10px 10px #161616 inset, 0px -10px 10px #161616 inset;
@@ -746,7 +750,8 @@ footer  .soporte ul li, .navegacion ul li{
     background-size: cover;
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+    margin-top: 60px;
 }
 
 .contenerdor-sub-info1{
@@ -757,11 +762,16 @@ footer  .soporte ul li, .navegacion ul li{
 
 .contenedor-informacion p{
     font-size: 20px;
+    text-align: justify;
 }
 
 .contenedor-sub-categoria1, .contenedor-sub-categoria2{
     display: flex;
     flex-direction: row;
+}
+
+.contenedor-descripcion{
+    margin-right: 40px;
 }
 
 .cuadro-categoria{
@@ -838,18 +848,28 @@ footer  .soporte ul li, .navegacion ul li{
     background-color: #A05858;
     border: none;
     border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.compartir img{
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
 }
 
 /*COMENTARIOS-FOROS*/
 
 .contenedor-social{
+    width: 70%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
 .comentarios{
-    width: 580px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     background-color: #4b4b4b6f;
@@ -870,6 +890,14 @@ footer  .soporte ul li, .navegacion ul li{
     border-color: white;
     border-style: none none solid none;
     border-width: 2px;
+}
+
+.escribir-comentario p{
+    margin-right: 33rem;
+}
+
+.escribir-comentario img{
+    width: 40px;
 }
 
 .icono-comentario{
@@ -904,6 +932,7 @@ footer  .soporte ul li, .navegacion ul li{
     flex-direction: column;
     border-color: #A05858;
     border-style: solid;
+    width: 50%;
 }
 
 .comunidad{
@@ -919,7 +948,7 @@ footer  .soporte ul li, .navegacion ul li{
     display: flex;
     align-items: center;
     height: 50px;
-    width: 300px;
+    width: 100%;
 }
 
 .comunidad-rosa{
@@ -929,6 +958,27 @@ footer  .soporte ul li, .navegacion ul li{
 .comunidad-negro{
     background-color: #B75555;
 }
+
+.comunidad img{
+    width: 35px;
+    margin-left: 5px;
+    margin-right: 3px;
+}
+
+/*JUEGOS SIMILARES*/
+
+.contenedor-juego-similar{
+    margin-top: 60px;
+    width: 70.6%;
+}
+
+.lista-juego-similar{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
 
 
 
@@ -999,10 +1049,11 @@ form>a>img {
 
 
     /* CARRUSELES */
+    /*
     .card-juego {
         margin-left: 30px;
     }
-
+    Lo saco por ahora*/
     .contenedor-categoria>h3 {
         margin-left: 110px;
     }
