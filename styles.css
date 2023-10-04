@@ -676,7 +676,6 @@ footer  .soporte ul li, .navegacion ul li{
 .main-body {
     background-image: url("images/fondo_login.png");
     background-size: cover;
-    background-position: sticky;
     background-repeat: no-repeat;
 }
 
@@ -930,6 +929,54 @@ footer  .soporte ul li, .navegacion ul li{
 .comunidad-negro{
     background-color: #B75555;
 }
+
+
+
+
+
+/* FORMULARIO */
+.form-login {
+    width: 500px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+    background-color: #161616;
+    border-left: 15px solid #BC6969;
+    border-right: 15px solid #BC6969;
+}
+
+form>img {
+    width: 60%;
+}
+
+form>a>img {
+    
+}
+
+.google {
+    margin: 6px 50px;
+    background-color:transparent;
+	border-radius:8px;
+	border:3px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:18px;
+	padding:5px 22px;
+	text-decoration:none;
+}
+
+.google:hover {
+    color: #161616;
+    background-color: #ffffff;
+}
+
+
+
 
 
 
