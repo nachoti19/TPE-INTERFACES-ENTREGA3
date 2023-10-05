@@ -17,66 +17,81 @@
 <body class="main-body">
 
     <main>
-        <form action="" class="formulario">
-            
+        <div class="formulario">
+
             <img src="images/logo.png">
 
-            <div class="iniciar-con">
-                <a href="index.html" class="google"><img src="images/icono_google.png" class="icono-red">Iniciar con Google</a>
-                <a href="index.html" class="facebook"><img src="images/icono_facebook.png" class="icono-red">Iniciar con Facebook</a>
+            <div class="animacion hide">
+                <h2>Cuenta creada exitosamente</h2>
+                <div class="success-animation">
+                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" /><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" /></svg>
+                </div>
+                <h2>¡A jugar!</h2>
             </div>
+            
+            <div class="contenido-formulario">
 
-            <div class="contenedor-inputs">
-                <label for="nombre">Nombre <span>*</span></label>
-                <input type="text" name="nombre">
+                <div class="iniciar-con">
+                    <a href="index.html" class="google boton-iniciar-con"><img src="images/icono_google.png" class="icono-red"><span>Iniciar con Google</span></a>
+                    <a href="index.html" class="facebook boton-iniciar-con"><img src="images/icono_facebook.png" class="icono-red"><span>Iniciar con Facebook</span></a>
+                </div>
 
-                <label for="apellido">Apellido <span>*</span></label>
-                <input type="text" name="apellido">
+                <div class="contenedor-inputs">
+                    <label for="nombre">Nombre <span>*</span></label>
+                    <input type="text" name="nombre">
 
-                <label for="user">Nombre de usuario</label>
-                <input type="text" name="user">
+                    <label for="apellido">Apellido <span>*</span></label>
+                    <input type="text" name="apellido">
 
-                <label for="edad">Edad <span>*</span></label>
-                <input type="number" name="edad">
+                    <label for="user">Nombre de usuario</label>
+                    <input type="text" name="user">
 
-                <label for="correo">Correo electrónico <span>*</span></label>
-                <input type="mail" name="correo">
+                    <label for="edad">Edad <span>*</span></label>
+                    <input type="number" name="edad">
 
-                <label for="contrasena">Contraseña <span>*</span></label>
-                <input type="password" name="constrasena">
+                    <label for="correo">Correo electrónico <span>*</span></label>
+                    <input type="mail" name="correo">
 
-                <label for="conf-contrasena">Confirmar contraseña <span>*</span></label>
-                <input type="password" name="conf-constrasena">
+                    <label for="contrasena">Contraseña <span>*</span></label>
+                    <input type="password" name="constrasena">
 
-                <div class="input-checks">
+                    <label for="conf-contrasena">Confirmar contraseña <span>*</span></label>
+                    <input type="password" name="conf-constrasena">
 
-                    <div>
-                        <input type="checkbox"><p>Acepto los <a href="">términos de uso</a>
-                        y <a href="">políticas de privacidad</a>.</p>
+                    <div class="input-checks">
+
+                        <div>
+                            <input type="checkbox"><p>Acepto los <a href="">términos de uso</a>
+                            y <a href="">políticas de privacidad</a>.</p>
+                        </div>
+
+                        <div>
+                            <input type="checkbox"><p>Mantenme al tanto de noticias y futuras actualizaciones.</p>
+                        </div>
+
+                        <img src="images/captcha.png" class="captcha">
+
                     </div>
 
-                    <div>
-                        <input type="checkbox"><p>Mantenme al tanto de noticias y futuras actualizaciones.</p>
+                    <div class="contenedor-botones">
+                        <a href="index.html" class="cancel-button">Cancelar</a>
+                        <button href="index.html" class="submit-button" id="crear-cuenta">Crear cuenta</button>
                     </div>
 
-                    <img src="images/captcha.png" class="captcha">
+
+                    <div class="contenedor-opciones">
+                        <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a>.</p>
+                    </div>
 
                 </div>
-
-                <div class="contenedor-botones">
-                    <a href="index.html" class="cancel-button">Cancelar</a>
-                    <a href="index.html" class="submit-button">Crear cuenta</a>
-                </div>
-
-                <div class="contenedor-opciones">
-                    <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a>.</p>
-                </div>
-
+            
             </div>
 
-        </form>
+        </div>
+
     </main>
 
+    <script src="scripts/succes_animation.js"></script>
 
 </body>
 

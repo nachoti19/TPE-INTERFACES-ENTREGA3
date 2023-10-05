@@ -15,8 +15,18 @@
 </head>
 
 <body>
-    <nav>
-        <a href="" class="pag-logo">
+
+    <div class="contenedor-porcentaje">
+        <i class="fas fa-3x fa-battery-full icon"></i>
+        
+        <div class="progress2 progress-moved">
+          <div class="progress-bar2"></div>
+          <div class="loader" style="--n: 1; --f: 0;"></div>
+        </div>
+    </div>
+
+    <nav class="navegacion hide">
+        <a href="index.html" class="pag-logo">
             <img src="images/logo_simplificado.png" alt="Racer Games logo" class="pag-logo">
         </a>
 
@@ -34,13 +44,13 @@
         </div>
     </nav>
 
-    <main>
+    <main class="cuerpo hide">
 
         <div class="menu-hamburguesa hide" id="hamburguesa">
 
             <div class="fondo-hamburguesa">
                 <button id="cerrar-hamburguesa">
-                    <i class="bi bi-x-lg"></i>
+                    <img src="images/icono_cruz.png	">
                 </button>
 
                 <img src="images/icono_perfil.png" class="pfp-hamburguesa">
@@ -57,30 +67,37 @@
                 <a href="">Lista de deseados</a>
                 <a href="">Historial de compras</a>
                 <a href="">Ayuda</a>
+                <a href="register.html">Cerrar sesión</a>
             </div>
-
-            
 
         </div>
 
-        <div class="slider-container">
+        <!--CARROUSEL INICIO-->
 
-            <div class="slider-content">
-        
-                <div class="slider-single">
-                    <img class="slider-single-image" src="images/mclovin.jpg" alt="1" />
-                    <h1 class="slider-single-title">McLovin racing</h1>
-                    <a class="slider-single-likes" href="javascript:void(0);">
-                        <i class="fa fa-heart"></i>
-                        <p>1,247</p>
-                    </a>
-                </div>
-        
-                <div class="slider-single">
-                    <img class="slider-single-image" src="images/nfs_heat.webp" alt="2" />
-                    <h1 class="slider-single-title">Need for Speed Heat</h1>
-                    <a class="slider-single-likes" href="javascript:void(0);">
-                        <i class="fa fa-heart"></i>
+        <section class="section">
+            <div class="slider">
+                <div class="slide">
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
+
+                    <div class="st first">
+                        <h1>Juego 1</h1>
+                        <img src="images/41394.jpg" alt="">
+                        
+                    </div>
+                    <div class="st">
+                        <h1>Juego 2</h1>
+                        <img src="images/55982.jpg" alt="">
+                    </div>
+                    <div class="st">
+                        <h1>Juego 3</h1>
+                        <img src="images/assetto_corsa.jpg" alt="">
+                    </div>
+                    <div class="st">
+                        <h1>Juego 3</h1>
+                        <img src="images/dakar.jpg" alt="">
                         <div class="calificacion">
                             <img src="images/estrella.png" class="estrella">
                             <img src="images/estrella.png" class="estrella">
@@ -88,47 +105,27 @@
                             <img src="images/estrella_vacia.png" class="estrella">
                             <img src="images/estrella_vacia.png" class="estrella">
                         </div>
-                    </a>
+                    </div>
+
+                    <div class="nav-auto">
+                        <div class="a-b1"></div>
+                        <div class="a-b2"></div>
+                        <div class="a-b3"></div>
+                        <div class="a-b4"></div>
+                    </div>
                 </div>
-                <div class="slider-single">
-                    <img class="slider-single-image" src="images/gran_turismo.jpg" alt="3" />
-                    <h1 class="slider-single-title">Gran Turismo 7</h1>
-                    <a class="slider-single-likes" href="javascript:void(0);">
-                        <i class="fa fa-heart"></i>
-                        <p>1,247</p>
-                    </a>
-                </div>
-        
-        
-                <div class="slider-single">
-                    <img class="slider-single-image" src="images/assetto_corsa.jpg" alt="4" />
-                    <h1 class="slider-single-title">Asetto Corsa Competizione</h1>
-                    <a class="slider-single-likes" href="javascript:void(0);">
-                        <i class="fa fa-heart"></i>
-                        <p>1,247</p>
-                    </a>
-                </div>
-        
-        
-                <div class="slider-single">
-                    <img class="slider-single-image" src="https://picsum.photos/id/977/200/300" alt="5" />
-                    <h1 class="slider-single-title">Through the Mountains</h1>
-                    <a class="slider-single-likes" href="javascript:void(0);">
-                        <i class="fa fa-heart"></i>
-                        <p>1,247</p>
-                    </a>
-                </div>
-        
-                <div class="slider-single">
-                    <img class="slider-single-image" src="https://picsum.photos/id/978/200/300" alt="6" />
-                    <h1 class="slider-single-title">Through the Mountains</h1>
-                    <a class="slider-single-likes" href="javascript:void(0);">
-                        <i class="fa fa-heart"></i>
-                        <p>1,247</p>
-                    </a>
+
+                <div class="nav-m">
+                    <label for="radio1" class="m-btn"></label>
+                    <label for="radio1" class="m-btn"></label>
+                    <label for="radio1" class="m-btn"></label>
+                    <label for="radio1" class="m-btn"></label>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!--CARROUSEL FIN-->
+
         <div class="contenedor-categoria">
             <h3>Jugados recientemente (últimos treinta días)</h3>
             <div class="contenedor-auxiliar">
@@ -660,7 +657,7 @@
         
     </main>
 
-    <footer>
+    <footer class="pie hide">
         <div class="contenedor-footer">
             <img src="images/logo.png" alt="Racer Games logo">
             <div class="contenedor-redes">
@@ -729,7 +726,9 @@
         
     </footer>
 
-    <script src="script.js"></script>
+    <script src="scripts/hamburger.js"></script>
+    <script src="scripts/carrousel.js"></script>
+    <script src="scripts/loading_animation.js"></script>
 
 </body>
 

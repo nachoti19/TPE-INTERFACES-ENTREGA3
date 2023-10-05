@@ -47,6 +47,8 @@ span {
 
 /* BARRA NAVEGACIÓN */
 nav {
+    margin-bottom: 200px;
+    z-index: 5;
     width: 100%;
     height: 60px;
     background-color: #CB3939;
@@ -124,20 +126,20 @@ nav {
     position: fixed;
     right: 0%;
     top: 0%;
+    z-index: 5;
 }
 
-.fondo-hamburguesa>button {
+#cerrar-hamburguesa {
     position: absolute;
-    top: 0%;
-    right: 0%;
-    margin-top: 22px;
-    margin-right: 30px;
+    top: 22px;
+    right: 48px;
     border: none;
     background: none;
+    width: 18px;
 }
 
-.hide {
-    display: none;
+#cerrar-hamburguesa>img {
+    width: 100%;
 }
 
 .fondo-hamburguesa {
@@ -332,7 +334,117 @@ main {
 }
 
 
+/*CARROUSEL*/
 
+.section{
+    margin-top: 50px;
+    padding: 0;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider{
+    width: 80%;
+    height: 400px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.slide{
+    width: 500%;
+    height: 500px;
+    display: flex;
+}
+
+.slide input{
+    display: none;
+}
+
+.st{
+    width: 20%;
+    transition: 2s;
+}
+
+.st img{
+    width: 100%;
+    height: 500px;
+}
+
+.nav-m{
+    position: absolute;
+    width: 80%;
+    margin-top: -40px;
+    display:flex;
+    justify-content: center;
+}
+
+.m-btn{
+    border: 2px solid #ffffff;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.m-btn:not(:last-child){
+    margin-right: 30px;
+}
+
+.m-btn:hover{
+    background-color: #161616;
+}
+
+#radio1:checked~.first{
+    margin-left: 0;
+}
+
+#radio2:checked~.first{
+    margin-left: -20%;
+}
+
+#radio3:checked~.first{
+    margin-left: -40%;
+}
+
+#radio4:checked~.first{
+    margin-left: -60%;
+}
+
+.nav-auto{
+    position: absolute;
+    width: 80%;
+    margin-top:460px;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-auto div{
+    border: 2px solid blue;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 1s;
+}
+
+.nav-auto div:not(:last-child){
+    margin-right: 30px;
+    justify-content: center;
+}
+
+#radio1:checked ~ .nav-auto .a-b1{
+    background-color: #CB3939;
+}
+#radio2:checked ~ .nav-auto .a-b2{
+    background-color: #CB3939;
+}
+#radio3:checked ~ .nav-auto .a-b3{
+    background-color: #CB3939;
+}
+#radio4:checked ~ .nav-auto .a-b4{
+    background-color: #CB3939;
+}
+/*CARROUSEL FIN*/
 
 
 /* CARDS JUEGOS */
@@ -423,6 +535,7 @@ footer{
     background-repeat: no-repeat;
     background-size: 100% 100%; /* ahí se ve bien en escritorio, pero en celular ni se ve */
     padding: 1rem;
+    margin-top: 50px;
 }
 
 .contenedor-footer{
@@ -547,129 +660,6 @@ footer .soporte ul li, .navegacion ul li{
 
 .contenedor-boton {
     margin-right: 500px;
-}
-
-/*CARROUSEL NUEVOS LANZAMIENTOS INICIO*/
-
-h4, .card-nuevos-lanzamientos h2, small, .card-nuevos-lanzamientos a{
-    margin: 0;
-    padding: 0;
-
-}
-
-.card-nuevos-lanzamientos a{
-    text-decoration: none;
-}
-
-.card-nuevos-lanzamientos h2{
-    font-size: 25px;
-    line-height: 38px;
-    padding-bottom: 24px;
-    opacity: .9;
-    text-transform: uppercase;
-    letter-spacing: 10px;
-    text-align: center;
-}
-
-/* CARRUSEL NUEVOS LANZAMIENTOS*/
-/*
-.contenedor-nuevos-lanzamientos {
-    width: 90%;
-    margin-top: 100px;
-}
-
-.card-nuevos-lanzamientos {
-    height: 200px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    height: 304px;
-    padding: 10px 0px;
-    margin: 0px auto;
-    max-width: 90vw;
-    overflow: hidden;
-}
-
-.slick-track{
-    position: relative;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    transition: .5s ease-in-out;
-}
-
-.slick{
-    position: relative;
-    width: 100%;
-    padding: 0 18px;
-    float: left;
-    box-sizing: border-box;
-    display: flex;
-    height: 100%;
-}
-
-.slick h4{
-    position: absolute;
-    z-index: 1;
-    font-size: 22px;
-    line-height: 23px;
-    color: white;
-    padding: 15px;
-}
-
-
-
-.slick a img{
-    object-fit: cover;
-    height: 300px;
-    width: 100%;
-    border-radius: 4px;
-    box-shadow: 0 2px 0 rgba(0,0,0,.5);
-    transition: .3 ease-in-out;
-}
-
-.slick a img:hover{
-    opacity: .85;
-    
-}
-
-/*.img-card-nl {
-    width: 100%;
-}*/
-
-/*BOTONES CARROUSEL*/
-
-.slick-arrow{
-    border-radius: 30px;
-    /*background-color: white;*/
-    position: absolute;
-    z-index: 4;
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .15);
-    border: 0;
-    cursor: pointer;
-}
-
-.slick-arrow:focus{
-    outline: 0;
-}
-
-.slick-arrow svg{
-    width: 100%;
-    height: 100%;
-    color: rgba(0, 0, 0, .7);
-}
-
-.slick-prev{
-    left: 0px;
-}
-
-.slick-next{
-    right: 0px;
 }
 
 /*OFERTAS ESPECIALES*/
@@ -825,7 +815,7 @@ footer  .soporte ul li, .navegacion ul li{
       background-color: white;
       opacity: 0.5;
       &.active {
-        opacity: 1;
+        background-color: #A73333;
       }
     }
   }
@@ -1369,12 +1359,11 @@ footer  .soporte ul li, .navegacion ul li{
 /* FORMULARIO */
 .formulario {
     width: 660px;
-    height: 1400px;
+    height: 1900px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding-top: 80px;
+    padding-top: 100px;
 
 
     background-color: #161616;
@@ -1382,11 +1371,20 @@ footer  .soporte ul li, .navegacion ul li{
     border-right: 15px solid #BC6969;
 }
 
+.contenido-formulario {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 80px;
+}
+
 .form-login {
     height: 960px;
 }
 
-form>img {
+.formulario>img {
     width: 50%;
 }
 
@@ -1401,8 +1399,13 @@ form>img {
     margin-right: 8px;
 }
 
-.google, .facebook {
-    width: 210px;
+
+
+
+
+
+.boton-iniciar-con {
+    width: 225px;
     margin: 10px;
     font-size:15px;
 	padding:8px 18px;
@@ -1410,35 +1413,67 @@ form>img {
 	text-decoration:none;
     display: flex;
     justify-content: center;
+    transition: all 0.5s;
+    cursor: pointer;
 }
+
+.boton-iniciar-con>span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.boton-iniciar-con>span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.boton-iniciar-con:hover>span {
+    padding-right: 15px;
+}
+
+.boton-iniciar-con:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 
 .google {
     background-color: #ffffff;
 	border:3px solid #ffffff;
-	color: #161616;
+}
 
+.google>span {
+	color: #161616;
 }
 
 .facebook {
     background-color: #1977F3;
 	border:3px solid #1977F3;
+}
+
+.facebook>span {
 	color:#ffffff;
+}
+
+.boton-iniciar-con:hover {
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
 }
 
 .google:hover {
     background-color: #9b9b9b;
     border:3px solid #9b9b9b;
-    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
 }
 
 .facebook:hover {
     border:3px solid #285fa8;
     background-color: #285fa8;
-    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.75);
 }
 
 label>span {
@@ -1550,6 +1585,157 @@ label>span {
 
 
 
+/* ANIMACIÓN CARGA INICIO */
+.contenedor-porcentaje {
+    margin: 100px auto;
+    margin-top: 430px;
+    width: 80%;
+    text-align: center;
+    position: relative;
+  }
+
+  .progress2 {
+    border-radius: 30px;
+    background-color: #838383;
+  }
+  
+  .progress-bar2 {
+    height: 18px;
+    border-radius: 30px;
+    transition: 0.4s linear;
+    transition-property: width, background-color;
+  }
+  
+  .progress-moved .progress-bar2 {
+    background-color: #f3c623;
+    animation: progress 5s;
+  }
+  
+  @keyframes progress {
+    0% {
+      width: 0%;
+      background: #f9bcca;
+    }
+  
+    100% {
+      width: 100%;
+      background: #f3c623;
+      box-shadow: 0 0 40px #f3c623;
+    }
+  }
+
+  
+  .loader {
+    --p: 0;
+    animation: p 5s steps(100);
+    counter-reset: p var(--p);
+    font-size: 2.1em;
+    position: absolute;
+    bottom: 45px;
+    left: 44.5%;
+    color: #f3c623;
+  }
+  
+  .loader:after {
+    content: counter(p) "%";
+  }
+  
+  @keyframes p {
+    90%,
+    100% {
+      --p: 100;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+/* ANIMACIÓN CREAR CUENTA */
+.animacion {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.success-animation { margin:60px auto;}
+
+.checkmark {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 2;
+    stroke: #4bb71b;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0px 0px 0px #4bb71b;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    position:relative;
+    top: 5px;
+    right: 5px;
+   margin: 0 auto;
+}
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+    stroke-miterlimit: 10;
+    stroke: #4bb71b;
+    fill: #161616;
+    animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+ 
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes stroke {
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes scale {
+    0%, 100% {
+        transform: none;
+    }
+
+    50% {
+        transform: scale3d(1.1, 1.1, 1);
+    }
+}
+
+@keyframes fill {
+    100% {
+        box-shadow: inset 0px 0px 0px 30px #4bb71b;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 /* MEDIA QUERIES */
 @media screen and (min-width:500px) {
 
@@ -1557,6 +1743,9 @@ label>span {
         font-size: 30px;
     }
 
+    .contenedor-porcentaje {
+        width: 50%;
+    }
 
     /* HAMBURGUESA */
     .contenedor2-hamburguesa {

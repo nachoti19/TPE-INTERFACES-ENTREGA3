@@ -23,13 +23,39 @@
 
         <a href="#" class="carrito"><img src="images/icono_carrito.png" alt="" class="carrito"></a>
 
-        <button class="hamburguesa">
+        <button class="hamburguesa" id="abrir-hamburguesa">
             <img src="images/icono_perfil.png" class="icono-hamburguesa">
         </button>
         </div>
     </nav>
 
     <main>
+
+        <div class="menu-hamburguesa hide" id="hamburguesa">
+
+            <div class="fondo-hamburguesa">
+                <button id="cerrar-hamburguesa">
+                    <img src="images/icono_cruz.png	">
+                </button>
+
+                <img src="images/icono_perfil.png" class="pfp-hamburguesa">
+
+                <div class="contenedor1-hamburguesa">
+                    <p class="nombre-usuario">JuanPiloto55</p>
+                    <p class="en-linea">en línea</p>
+                </div>
+            </div>
+
+            <div class="contenedor2-hamburguesa">
+                <a href="">Ver perfil</a>
+                <a href="">Mis reseñas</a>
+                <a href="">Lista de deseados</a>
+                <a href="">Historial de compras</a>
+                <a href="">Ayuda</a>
+            </div>
+
+        </div>
+
         <div class="contenedor-juego">
             <div class="contenedor-pantalla">
                 <div class="pantalla-juego">
@@ -422,5 +448,6 @@
             </div>
         
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
