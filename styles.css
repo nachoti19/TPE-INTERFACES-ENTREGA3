@@ -336,148 +336,104 @@ main {
 
 /*CARROUSEL*/
 
-.section{
-    margin-top: 50px;
-    padding: 0;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.slider{
-    width: 80%;
-    height: 400px;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.slide{
-    width: 500%;
-    height: 500px;
-    display: flex;
-}
-
-.slide input{
-    display: none;
-}
-
-.st{
-    width: 20%;
-    transition: 2s;
-}
-
-.st img{
-    width: 100%;
+/* Slideshow container */
+.slideshow-container{
+    max-width: 80%;
+    position: relative;
+    margin: auto;
+    height: 560px;
+  }
+  
+.img-carrousel{
+    width: 1500px;
     height: 500px;
 }
 
-.nav-m{
-    position: absolute;
-    width: 80%;
-    margin-top: -40px;
-    display:flex;
-    justify-content: center;
-}
-
-.m-btn{
-    border: 2px solid #ffffff;
-    padding: 5px;
-    border-radius: 10px;
+  /* Next & previous buttons */
+  .prev, .next {
     cursor: pointer;
-    transition: 1s;
-}
-
-.m-btn:not(:last-child){
-    margin-right: 30px;
-}
-
-.m-btn:hover{
-    background-color: #161616;
-}
-
-#radio1:checked~.first{
-    margin-left: 0;
-}
-
-#radio2:checked~.first{
-    margin-left: -20%;
-}
-
-#radio3:checked~.first{
-    margin-left: -40%;
-}
-
-#radio4:checked~.first{
-    margin-left: -60%;
-}
-
-.nav-auto{
     position: absolute;
-    width: 80%;
-    margin-top:460px;
-    display: flex;
-    justify-content: center;
-}
-
-.nav-auto div{
-    border: 2px solid blue;
-    padding: 5px;
-    border-radius: 10px;
-    transition: 1s;
-}
-
-.nav-auto div:not(:last-child){
-    margin-right: 30px;
-    justify-content: center;
-}
-
-#radio1:checked ~ .nav-auto .a-b1{
-    background-color: #CB3939;
-}
-#radio2:checked ~ .nav-auto .a-b2{
-    background-color: #CB3939;
-}
-#radio3:checked ~ .nav-auto .a-b3{
-    background-color: #CB3939;
-}
-#radio4:checked ~ .nav-auto .a-b4{
-    background-color: #CB3939;
-}
-/*CARROUSEL FIN*/
-
-
-/* CARDS JUEGOS */
-.card-juego {
-    min-width: 300px;
-    height: 200px;
-    margin: 6px;
-}
-
-.card-portada {
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+  }
+  
+  /* Caption text */
+  .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
     width: 100%;
-    height: 160px;
-    border: 1px solid #8A8A8A
-    
-}
+    text-align: center;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
 
-.card-info {
+  @keyframes fade {
+    from {opacity: .1} 
+    to {opacity: 1}
+  }
+
+  /* On smaller screens, decrease text size */
+  @media only screen and (max-width: 300px) {
+    .prev, .next,.text {font-size: 11px}
+  }
+
+.contenedor-carrousel-data{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 3px;
-    font-size: 12px;
 }
-
-.precio {
-    font-size: 16px;
-}
-
-.estrella {
-    width: 22px;
-}
-
-
+/*CARROUSEL FIN*/
 
 
 /* BOTONES */
@@ -524,6 +480,174 @@ main {
   .ver-mas:hover:after{
     width: 100%;
   }
+
+
+
+  /* CARDS JUEGOS */
+.card-juego {
+    min-width: 300px;
+    height: 200px;
+    margin: 6px;
+}
+
+.contenedor-card-auxiliar {
+    position: relative;
+}
+
+.contenedor-card-auxiliar:hover button {
+    display: inline-block;
+}
+
+.contenedor-card-auxiliar:hover img {
+    filter: blur(1.5px);
+}
+
+.jugar-boton, .cart-button {
+    z-index: 5;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.cart-button {
+	padding: 10px;
+	width: 180px;
+	height: 50px;
+	border: 0;
+	border-radius: 10px;
+	background-color: #157AB4;
+	outline: none;
+	cursor: pointer;
+	color: #fff;
+	transition: .3s ease-in-out;
+	overflow: hidden;
+}
+.cart-button:hover {
+	background-color: #549ec9;
+}
+
+.cart-button .fa-shopping-cart {
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: -10%;
+	font-size: 2em;
+	transform: translate(-50%,-50%);
+}
+.cart-button .fa-box {
+	position: absolute;
+	z-index: 3;
+	top: -20%;
+	left: 52%;
+	font-size: 1.2em;
+	transform: translate(-50%,-50%);
+}
+.cart-button span {
+	position: absolute;
+	z-index: 3;
+	left: 50%;
+	top: 50%;
+	font-size: 14.5px;
+	color: #fff;
+	transform: translate(-50%,-50%);
+}
+.cart-button span.add-to-cart {
+	opacity: 1;
+}
+.cart-button span.added {
+	opacity: 0;
+}
+
+.clicked .fa-shopping-cart {
+	animation: cart 1.5s ease-in-out forwards;
+}
+.clicked .fa-box {
+	animation: box 1.5s ease-in-out forwards;
+}
+.clicked span.add-to-cart {
+	animation: txt1 1.5s ease-in-out forwards;
+}
+.clicked span.added {
+	animation: txt2 1.5s ease-in-out forwards;
+}
+
+.clicked {
+    display: inline-block !important;
+}
+
+@keyframes cart {
+	0% {
+		left: -10%;
+	}
+	40%, 60% {
+		left: 50%;
+	}
+	100% {
+		left: 110%;
+	}
+}
+@keyframes box {
+	0%, 40% {
+		top: -20%;
+	}
+	60% {
+		top: 40%;
+		left: 52%;
+	}
+	100% {
+		top: 40%;
+		left: 112%;
+	}
+}
+@keyframes txt1 {
+	0% {
+		opacity: 1;
+	}
+	20%, 100% {
+		opacity: 0;
+	}
+}
+@keyframes txt2 {
+	0%, 80% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+
+
+
+
+
+
+.card-portada {
+    width: 100%;
+    height: 160px;
+    border: 1px solid #8A8A8A
+    
+}
+
+.card-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3px;
+    font-size: 12px;
+}
+
+.precio {
+    font-size: 16px;
+}
+
+.estrella {
+    width: 22px;
+}
+
 
 
 /*FOOTER*/
@@ -784,222 +908,6 @@ footer  .soporte ul li, .navegacion ul li{
     background-size: cover;
     background-repeat: no-repeat;
 }
-
-
-
-
-
-
-/*CARROUSEL POR NOVENA VEZ*/
-
-.slider-container {
-  position: relative;
-  margin: 0 auto;
-  width: 90%;
-  height: 800px;
-  .bullet-container {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .bullet {
-      margin-right: 14px;
-      &:last-child {
-        margin-right: 0px;
-      }
-      height: 20px;
-      width: 20px;
-      border-radius: 50%;
-      background-color: white;
-      opacity: 0.5;
-      &.active {
-        background-color: #A73333;
-      }
-    }
-  }
-  .slider-content {
-    position: relative;
-    left: 50%;
-    top: 50%;
-    width: 70%;
-    height: 60%;
-    transform: translate(-50%, -50%);
-    .slider-single {
-      position: absolute;
-      z-index: 0;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      transition: z-index 0ms;
-      .slider-single-image {
-        position: relative;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
-        transform: scale(0);
-        opacity: 0;
-      }
-      .slider-single-download {
-        position: absolute;
-        display: block;
-        right: -22px;
-        bottom: 12px;
-        padding: 15px;
-        color: #333333;
-        background-color: #fdc84b;
-        font-size: 18px;
-        font-weight: 600;
-        font-family: "karla";
-        border-radius: 5px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
-        opacity: 0;
-        &:hover,
-        &:focus {
-          outline: none;
-          text-decoration: none;
-        }
-      }
-      .slider-single-title {
-        display: block;
-        float: left;
-        margin: 16px 0 0 20px;
-        font-size: 20px;
-        font-family: "karla";
-        font-weight: 400;
-        color: #ffffff;
-        opacity: 0;
-      }
-      .slider-single-likes {
-        display: block;
-        float: right;
-        margin: 16px 20px 0 0;
-        opacity: 0;
-        i {
-          font-size: 20px;
-          display: inline-block;
-          vertical-align: middle;
-          margin-right: 5px;
-          color: #ff6060;
-          transform: scale(0);
-        }
-        p {
-          display: inline-block;
-          vertical-align: middle;
-          margin: 0;
-          color: #ffffff;
-        }
-        &:hover,
-        &:focus {
-          outline: none;
-          text-decoration: none;
-        }
-      }
-      &.preactive {
-        z-index: 1;
-        .slider-single-image {
-          opacity: 0.3;
-          transform: translateX(-25%) scale(0.8);
-        }
-        .slider-single-download {
-          transform: translateX(-150px);
-        }
-        .slider-single-title {
-          transform: translateX(-150px);
-        }
-        .slider-single-likes {
-          transform: translateX(-150px);
-        }
-      }
-      &.proactive {
-        z-index: 1;
-        .slider-single-image {
-          opacity: 0.3;
-          transform: translateX(25%) scale(0.8);
-        }
-        .slider-single-download {
-          transform: translateX(150px);
-        }
-        .slider-single-title {
-          transform: translateX(150px);
-        }
-        .slider-single-likes {
-          transform: translateX(150px);
-        }
-      }
-      &.active {
-        z-index: 2;
-        .slider-single-image {
-          opacity: 1;
-          transform: translateX(0%) scale(1);
-        }
-        .slider-single-download {
-          opacity: 1;
-          transition-delay: 100ms;
-          transform: translateX(0px);
-        }
-        .slider-single-title {
-          opacity: 1;
-          transition-delay: 200ms;
-          transform: translateX(0px);
-        }
-        .slider-single-likes {
-          opacity: 1;
-          transition-delay: 300ms;
-          transform: translateX(0px);
-          i {
-            animation-name: heartbeat;
-            animation-duration: 500ms;
-            animation-delay: 900ms;
-            animation-fill-mode: forwards;
-          }
-        }
-      }
-    }
-  }
-  .slider-left {
-    position: absolute;
-    z-index: 3;
-    display: block;
-    right: 85%;
-    top: 50%;
-    color: #ffffff;
-    transform: translateY(-50%);
-    padding: 20px 15px;
-    border-top: 2px solid #fdc84b;
-    border-right: 2px solid #fdc84b;
-    border-bottom: 2px solid #fdc84b;
-    border-left: 2px solid #fdc84b;
-    margin-right: -2px;
-  }
-  .slider-right {
-    position: absolute;
-    z-index: 3;
-    display: block;
-    left: 85%;
-    top: 50%;
-    color: #ffffff;
-    transform: translateY(-50%);
-    padding: 20px 15px;
-    border-top: 2px solid #fdc84b;
-    border-right: 2px solid #fdc84b;
-    border-bottom: 2px solid #fdc84b;
-    border-left: 2px solid #fdc84b;
-    margin-left: -2px;
-  }
-  .not-visible {
-    display: none !important;
-  }
-}
-
-
-
-
-/*FIN CARROUSEL*/
 
 /*PAGINA JUEGO*/
 

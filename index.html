@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/x-icon" href="/images/logo_simplificado.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -74,55 +75,65 @@
 
         <!--CARROUSEL INICIO-->
 
-        <section class="section">
-            <div class="slider">
-                <div class="slide">
-                    <input type="radio" name="radio-btn" id="radio1">
-                    <input type="radio" name="radio-btn" id="radio2">
-                    <input type="radio" name="radio-btn" id="radio3">
-                    <input type="radio" name="radio-btn" id="radio4">
+        <div class="slideshow-container">
 
-                    <div class="st first">
-                        <h1>Juego 1</h1>
-                        <img src="images/41394.jpg" alt="">
-                        
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 3</div>
+              <img src="images/1314098.jpeg" class="img-carrousel">
+                <div class="contenedor-carrousel-data">
+                    <h3>JUEGO1</h3>
+                    <div class="calificacion">
+                        <img src="images/estrella.png" class="estrella">
+                        <img src="images/estrella.png" class="estrella">
+                        <img src="images/estrella_vacia.png" class="estrella">
+                        <img src="images/estrella_vacia.png" class="estrella">
+                        <img src="images/estrella_vacia.png" class="estrella">
                     </div>
-                    <div class="st">
-                        <h1>Juego 2</h1>
-                        <img src="images/55982.jpg" alt="">
-                    </div>
-                    <div class="st">
-                        <h1>Juego 3</h1>
-                        <img src="images/assetto_corsa.jpg" alt="">
-                    </div>
-                    <div class="st">
-                        <h1>Juego 3</h1>
-                        <img src="images/dakar.jpg" alt="">
-                        <div class="calificacion">
-                            <img src="images/estrella.png" class="estrella">
-                            <img src="images/estrella.png" class="estrella">
-                            <img src="images/estrella_vacia.png" class="estrella">
-                            <img src="images/estrella_vacia.png" class="estrella">
-                            <img src="images/estrella_vacia.png" class="estrella">
-                        </div>
-                    </div>
-
-                    <div class="nav-auto">
-                        <div class="a-b1"></div>
-                        <div class="a-b2"></div>
-                        <div class="a-b3"></div>
-                        <div class="a-b4"></div>
-                    </div>
-                </div>
-
-                <div class="nav-m">
-                    <label for="radio1" class="m-btn"></label>
-                    <label for="radio1" class="m-btn"></label>
-                    <label for="radio1" class="m-btn"></label>
-                    <label for="radio1" class="m-btn"></label>
                 </div>
             </div>
-        </section>
+            
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 3</div>
+              <img src="images/AssettoCorsaCompetizione-Head.jpg" class="img-carrousel">
+              <div class="contenedor-carrousel-data">
+                <h3>JUEGO1</h3>
+                <div class="calificacion">
+                    <img src="images/estrella.png" class="estrella">
+                    <img src="images/estrella.png" class="estrella">
+                    <img src="images/estrella_vacia.png" class="estrella">
+                    <img src="images/estrella_vacia.png" class="estrella">
+                    <img src="images/estrella_vacia.png" class="estrella">
+                </div>
+            </div>
+            </div>
+            
+            <div class="mySlides fade">
+              <div class="numbertext">3 / 3</div>
+              <img src="images/8385556.jpg" class="img-carrousel">
+              <div class="contenedor-carrousel-data">
+                <h3>JUEGO1</h3>
+                <div class="calificacion">
+                    <img src="images/estrella.png" class="estrella">
+                    <img src="images/estrella.png" class="estrella">
+                    <img src="images/estrella_vacia.png" class="estrella">
+                    <img src="images/estrella_vacia.png" class="estrella">
+                    <img src="images/estrella_vacia.png" class="estrella">
+                </div>
+            </div>
+            </div>
+            
+            <a class="prev" onclick="plusSlides(-1)">❮</a>
+            <a class="next" onclick="plusSlides(1)">❯</a>
+            
+            </div>
+            <br>
+            
+            <div style="text-align:center">
+              <span class="dot" onclick="currentSlide(1)"></span> 
+              <span class="dot" onclick="currentSlide(2)"></span> 
+              <span class="dot" onclick="currentSlide(3)"></span> 
+            </div>
+            
 
         <!--CARROUSEL FIN-->
 
@@ -170,7 +181,7 @@
 
         </div>
         
-        <section class="ofertas">
+        <!-- <section class="ofertas">
             <h3 class="tituloOf">Ofertas Especiales</h3>
             <div class="cardOf">
                 <div class="PrecioOf">
@@ -205,7 +216,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
 
     <div class="contenedor-categoria recomendados">
 
@@ -214,7 +225,16 @@
         <div class="contenedor-auxiliar"> 
 
             <div class="card-juego">
-                <img class="card-portada" src="images/f1_21.jpg" alt="Portada">
+                <div class="contenedor-card-auxiliar">
+                    <button class="cart-button">
+                        <span class="add-to-cart">Agregar</span>
+                        <span class="added"><i class="bi bi-cart-check-fill"></i> En el carro</span>
+                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-box"></i>
+                    </button>
+                    <img class="card-portada" src="images/f1_21.jpg" alt="Portada">
+                </div>
+                
                 <div class="card-info">
                     <div class="calificacion">
                         <img src="images/estrella.png" class="estrella">
@@ -729,6 +749,7 @@
     <script src="scripts/hamburger.js"></script>
     <script src="scripts/carrousel.js"></script>
     <script src="scripts/loading_animation.js"></script>
+    <script src="scripts/cart_animation.js"></script>
 
 </body>
 
