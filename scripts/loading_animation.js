@@ -20,4 +20,4 @@ CSS.registerProperty({
     syntax: "<integer>",
     initialValue: 0,
     inherits: true,
-  });
+});
