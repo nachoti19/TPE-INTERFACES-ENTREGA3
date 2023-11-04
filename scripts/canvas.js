@@ -3,6 +3,11 @@ class Tablero {
     constructor (columnas, numeroGanador) {
         this.columnas = columnas;
         this.numeroGanador = numeroGanador;
+
+        if (numeroGanador > 4) {
+            this.columnas += this.numeroGanador - 4;
+        }
+
         //MATRIZ QUE CONTIENE LAS FICHAS
         this.casillas = new Array();
         //MATRIZ QUE CONTIENE LAS COORDENADAS EN EL CANVAS PARA CADA CASILLA
@@ -51,7 +56,7 @@ class Tablero {
         let X = this.coordXInicio + 25;
         let Y = this.coordYInicio + 40;
         let triangulos = false;
-        
+
         for (i = 0; i < 6; i++) {
             //HUECOS
             for (j = 0; j < this.columnas; j++) {
@@ -130,7 +135,6 @@ class Tablero {
     }
 
     verificarEstado (ficha, pos1, pos2) {
-
         let fila = pos1;
         let columna = pos2;
         
@@ -227,6 +231,7 @@ class Tablero {
             else finBusqueda = true;
         }
         if (contadorRectaVertical >= this.numeroGanador) {
+            console.log("ha ganao");
             this.winner(this.casillas[fila][columna]);
             return;
         }
@@ -306,8 +311,9 @@ class Tablero {
             fila = pos1;
             columna = pos2;
         }
+        
         /*
-        PARA VER SI EL TABLERO ESTÁ VERIFICANDO BIEN LAS JUGADAS...
+        //PARA VER SI EL TABLERO ESTÁ VERIFICANDO BIEN LAS JUGADAS...
         console.log("nadie ganó en esta jugada");
         console.log("diagonal (1) : " + contadorDiagonal1);
         console.log("recta horizontal: " + contadorRectaHorizontal);
@@ -315,6 +321,7 @@ class Tablero {
         console.log("recta vertical: " + contadorRectaVertical);
         console.log("");
         */
+        
     }
 
     cambiarTurno(ficha) {
@@ -331,7 +338,7 @@ class Tablero {
         }
     }
 
-    winner (ficha) {        
+    winner (ficha) {
         let fillFicha = ficha.getFill();
         let i = 0;
 
@@ -381,6 +388,9 @@ class Ficha {
         this.posicionY = posicionY;
         this.radio = radio;
         this.fill = fill;
+        this.image = new Image();
+        this.image.src = fill;
+        this.image.onload = () => this.draw();
         this.arrastrable = true;
         this.enTablero = false;
     }
@@ -430,13 +440,17 @@ class Ficha {
     }
 
     draw () {
-        //X, Y, RADIO, INICIO, FIN
+        context.save();
         context.beginPath();
         context.arc(this.posicionX, this.posicionY, this.radio, 0, 2 * Math.PI);
-        context.stroke();
-        context.fillStyle = this.fill;
-        context.fill();
         context.closePath();
+        context.clip();
+        context.drawImage(this.image, this.posicionX - this.radio, this.posicionY - this.radio, this.radio * 2, this.radio * 2);
+        context.beginPath();
+        context.arc(0, 0, 25, 0, Math.PI * 2, true);
+        context.clip();
+        context.closePath();
+        context.restore();
     }
 
     isClicked (clickX, clickY) {
@@ -453,15 +467,145 @@ class Ficha {
 
 }
 
-
-
-
 //CANVAS Y CONTEXT
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
 
-//CONFIGURACIONES DE JUEGO (HARDCODEADOS POR AHORA)
-let tablero = new Tablero(7, 4); //TAMAÑO SIETE COLUMNAS
+let btnJugar = document.querySelector('#jugar');//Agarra el boton "jugar"
+let bntConfig = document.querySelector('#config');//Agarra el boton "config"
+let PantallaJuego = document.querySelector('.inicio-juego');//toma el div "pantalla-juego"
+//cambia los estilos cuando se apreta el boton jugar
+
+let fillJugador1;
+let fillJugador2;
+let tablero;
+let jugador1 = "Jugador 1";
+let jugador2 = "Jugador 2";
+
+btnJugar.addEventListener('click', function(){
+    //SI LAS OPCIONES ESTÁN VACÍAS
+    if(fillJugador1 == null && fillJugador2 == null) {
+        tablero = new Tablero(7, 4); //<------------------------------------------------------------------------------
+        fillJugador1 = "./images/equipo1.png";
+        crearFichas(jugador1, fillJugador1);
+        posicionX = width - 80 * 2.65
+        fillJugador2 = "./images/equipo2.png";
+        crearFichas(jugador2, fillJugador2);
+
+    }
+    //SI NO ESTÁN VACÍAS
+    else {
+        tablero = new Tablero(7, XenLinea); //<------------------------------------------------------------------------------
+        crearFichas(jugador1, fillJugador1);
+        posicionX = width - 80 * 2.65
+        //CREA FICHA JUGAR 2
+        crearFichas(jugador2, fillJugador2);
+        //RECORRO EL ARREGLO QUE TIENE ADENTRO LOS INPUTS
+    }
+    canvas.style.display = "block";
+    PantallaJuego.style.display = "none";
+});
+
+//tomo los botones en sus respectivas varibles
+let select = document.querySelector('#seleccionar');
+let btnIzq = document.querySelector('#flecha-izq');
+let btnDer = document.querySelector('#flecha-der');
+let equipo1 = document.querySelector('#equipo1');
+let equipo2 = document.querySelector('#equipo2');
+let equipo3 = document.querySelector('#equipo3');
+let tamanio = document.querySelector('.tamanio');
+let opcion1 = document.querySelector('#check1');
+let opcion2 = document.querySelector('#check2');
+let opcion3 = document.querySelector('#check3');
+let opciones = [opcion1, opcion2, opcion3];
+//cambio los displays para cambiar de "pestaña"
+bntConfig.addEventListener('click', function(){
+    btnJugar.style.display = "none";
+    bntConfig.style.display = "none";
+    select.style.display = "block";
+    btnDer.style.display = "block";
+    btnIzq.style.display = "block";
+    equipo1.style.display = "block";
+    tamanio.style.display = "block";
+    opcion1.style.display = "block";
+    opcion2.style.display = "block";
+    opcion3.style.display = "block";
+});
+
+//CARRUSEL
+let listaEquipos = [equipo1, equipo2, equipo3];
+let pos = 0;
+let posA = 0;
+const max = listaEquipos.length;
+
+//Carrousel equipos inicio
+btnIzq.addEventListener('click', function(){
+    for(i = 0; i<listaEquipos.length;i++){
+        listaEquipos[i].style.display = "none";
+    }
+    pos--;
+    if(pos<0){
+        pos = 2;
+    }
+    listaEquipos[pos].style.display = "block";
+    posA = pos;
+    return pos+1;
+});
+
+btnDer.addEventListener('click', function(){
+    for(i = 0; i<listaEquipos.length;i++){
+        listaEquipos[i].style.display = "none";
+    }
+    pos++;
+    if(pos>2){
+        pos = 0;
+    }
+    posA = pos;
+    listaEquipos[pos].style.display = "block";
+    return pos-1;
+});
+//Carrousel equipos fin
+
+let XenLinea = 4;
+
+select.addEventListener('click', function(){
+    if(listaEquipos[posA] == equipo1){
+        //TOMA LA IMAGEN DE LAS FICHAS DEL JUGADOR 1
+        fillJugador1 = "./images/icono_insane.jpg";
+        //TOMA LA IMAGEN DE LAS FICHAS DEL JUGADOR 2
+        fillJugador2= "./images/equipo6.png";
+    }
+    if(listaEquipos[posA] == equipo2){
+        fillJugador1 = "./images/equipo3.png";
+        fillJugador2 = "./images/equipo4.png";
+    }
+    if(listaEquipos[posA] == equipo3){
+        fillJugador1 = "./images/icono_insane.jpg";
+        fillJugador2 = "./images/mclovin.jpg";
+    }
+
+    for(let i = 0; i<opciones.length; i++){
+        //POR CADA OPCION, PREGUNTO SI ESTA SELECCIONADA
+        if(opciones[i].checked){
+            //SI LO ESTA, GUARDO EL VALOR DE ESE INPUT, EN UNA VARIABLE
+            XenLinea = opciones[i].value;
+        }
+    }
+
+    //tablero = new Tablero(7, XenLinea); //<------------------------------------------------------------------------------
+
+    btnJugar.style.display = "block";
+    bntConfig.style.display = "block";
+    select.style.display = "none";
+    btnDer.style.display = "none";
+    btnIzq.style.display = "none";
+    
+    for(i = 0; i<listaEquipos.length;i++){
+        listaEquipos[i].style.display = "none";
+    }
+    return pos = 0;
+});
+
 let cantFichas = 21; //(POR JUGADOR)
 let arregloFichas = [];
 
@@ -472,23 +616,6 @@ let height = canvas.height;
 let posicionX = 90;
 let posicionY = 160;
 //ARREGLO DONDE SE GUARDAN TODAS LAS FICHAS
-let jugador1, jugador2;
-
-
-
-let jugador = "el pro";
-jugador1 = jugador;
-let fillJugador1 = "yellow";
-crearFichas(jugador, fillJugador1);
-
-//SE CAMBIA EL COLOR, EL JUGADOR Y LA POSICION DE LAS FICHAS
-posicionX = width - 80 * 2.65
-jugador = "el choto";
-jugador2 = jugador;
-let fillJugador2 = "red";
-crearFichas(jugador, fillJugador2);
-
-
 
 function crearFichas (jugador, fill) {
     let X = posicionX;
@@ -516,8 +643,13 @@ function crearFichas (jugador, fill) {
 
 function dibujarElementos() {
     //BORRA EL CANVAS POR COMPLETO
-    context.fillStyle = "#ffffff";
-    context.fillRect(0, 0, width, height);
+    let img = new Image();
+    img.src = "./images/8385556.jpg"
+    img.onload = function () {
+        context.drawImage(img, 0, 0);
+    }
+    //context.fillStyle = "#ffffff";
+    //context.fillRect(0, 0, width, height);
     //DIBUJA EL TABLERO
     tablero.draw();
 
@@ -526,6 +658,15 @@ function dibujarElementos() {
         //LA DIBUJA
         ficha.draw();
     }
+
+    //BOTON REINICIAR
+    context.fillStyle = "#161616";
+    context.fillRect(width/2-40, 700, 80, 35);
+    context.fillStyle = "#ffffff"
+    context.font = "18px Arial";
+    context.textAlign ="center"
+    context.fillText("Reiniciar", width/2, 725);
+
 
     //ESCRIBE LOS JUGADORES SOBRE SUS FICHAS
     context.fillStyle = "#000000"
@@ -613,7 +754,8 @@ let mouseDown = function(event) {
     startX = parseInt(event.clientX) - rect.left;
     startY = parseInt(event.clientY) - rect.top;
 
-    if (startX < 60 && startY < 60) restart();
+    if (startX > width/2-40 && startY > 700 &&
+        startX < width/2+40 && startY > 35) restart();
 
     //POR CADA FICHA GUARDADA EN EL ARREGLO DE FICHAS...
     for (let ficha of arregloFichas) {
