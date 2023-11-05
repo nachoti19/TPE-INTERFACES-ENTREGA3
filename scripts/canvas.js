@@ -3,7 +3,6 @@ class Tablero {
     constructor (columnas, numeroGanador) {
         this.columnas = columnas;
         this.numeroGanador = numeroGanador;
-
         if (numeroGanador > 4) {
             this.columnas += this.numeroGanador - 4;
         }
@@ -500,7 +499,6 @@ btnJugar.addEventListener('click', function(){
         posicionX = width - 80 * 2.65
         //CREA FICHA JUGAR 2
         crearFichas(jugador2, fillJugador2);
-        //RECORRO EL ARREGLO QUE TIENE ADENTRO LOS INPUTS
     }
     canvas.style.display = "block";
     PantallaJuego.style.display = "none";
@@ -508,80 +506,143 @@ btnJugar.addEventListener('click', function(){
 
 //tomo los botones en sus respectivas varibles
 let select = document.querySelector('#seleccionar');
-let btnIzq = document.querySelector('#flecha-izq');
-let btnDer = document.querySelector('#flecha-der');
-let equipo1 = document.querySelector('#equipo1');
-let equipo2 = document.querySelector('#equipo2');
-let equipo3 = document.querySelector('#equipo3');
-let tamanio = document.querySelector('.tamanio');
+let btnIzqJ1 = document.querySelector('#flecha-izqJ1');
+let btnDerJ1 = document.querySelector('#flecha-derJ1');
+let btnIzqJ2 = document.getElementById('flecha-izqJ2');
+let btnDerJ2 = document.querySelector('#flecha-derJ2');
+//equipos jugador 1
+let equipo1J1 = document.querySelector('#equipo1J1');
+let equipo2J1 = document.querySelector('#equipo2J1');
+let equipo3J1 = document.querySelector('#equipo3J1');
+let equipo4J1 = document.querySelector('#equipo4J1');
+let equipo5J1 = document.querySelector('#equipo5J1');
+let equipo6J1 = document.querySelector('#equipo6J1');
+//equipos jugador 2
+let equipo1J2 = document.querySelector('#equipo1J2');
+let equipo2J2 = document.querySelector('#equipo2J2');
+let equipo3J2 = document.querySelector('#equipo3J2');
+let equipo4J2 = document.querySelector('#equipo4J2');
+let equipo5J2 = document.querySelector('#equipo5J2');
+let equipo6J2 = document.querySelector('#equipo6J2');
+//let tamanio = document.querySelector('.tamanio');
+//CONFIGURACION TABLERO
+let titulo = document.querySelector('.cantidad');
 let opcion1 = document.querySelector('#check1');
 let opcion2 = document.querySelector('#check2');
 let opcion3 = document.querySelector('#check3');
-let opciones = [opcion1, opcion2, opcion3];
+let opcion4 = document.querySelector('#check4');
+let txt = document.querySelectorAll("p.texto");
+//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+let config = document.querySelector('.select-equipos');
+let opciones = [opcion1, opcion2, opcion3, opcion4];
 //cambio los displays para cambiar de "pestaña"
 bntConfig.addEventListener('click', function(){
     btnJugar.style.display = "none";
     bntConfig.style.display = "none";
+    config.style.display = "flex";
+    equipo1J1.style.display = "block";
+    equipo1J2.style.display = "block";
+    
+    for(let i = 0; i<txt.length; i++){
+        txt[i].style.display = "block";
+    }
+
+    for(let i = 0; i<opciones.length; i++){
+        opciones[i].style.display = "block";
+    }
     select.style.display = "block";
-    btnDer.style.display = "block";
-    btnIzq.style.display = "block";
-    equipo1.style.display = "block";
-    tamanio.style.display = "block";
-    opcion1.style.display = "block";
-    opcion2.style.display = "block";
-    opcion3.style.display = "block";
+    titulo.style.display = "block";
 });
 
 //CARRUSEL
-let listaEquipos = [equipo1, equipo2, equipo3];
-let pos = 0;
-let posA = 0;
-const max = listaEquipos.length;
+let equipoj1 = [equipo1J1, equipo2J1, equipo3J1, equipo4J1, equipo5J1, equipo6J1];
+let equipoj2= [equipo1J2, equipo2J2, equipo3J2, equipo4J2, equipo5J2, equipo6J2];
+let posj1 = 0;
+let posj2 = 0;
+let posAj1 = 0;
+let posAj2 = 0;
+const max = equipoj1.length;
 
 //Carrousel equipos inicio
-btnIzq.addEventListener('click', function(){
-    for(i = 0; i<listaEquipos.length;i++){
-        listaEquipos[i].style.display = "none";
-    }
-    pos--;
-    if(pos<0){
-        pos = 2;
-    }
-    listaEquipos[pos].style.display = "block";
-    posA = pos;
-    return pos+1;
-});
+btnIzqJ1.addEventListener('click', () => correrIzqJ1(equipoj1));
 
-btnDer.addEventListener('click', function(){
-    for(i = 0; i<listaEquipos.length;i++){
-        listaEquipos[i].style.display = "none";
+function correrIzqJ1(equipo){
+    for(i = 0; i<max;i++){
+        equipo[i].style.display = "none";
     }
-    pos++;
-    if(pos>2){
-        pos = 0;
+    posj1--;
+    if(posj1<0){
+        posj1 = max-1;
     }
-    posA = pos;
-    listaEquipos[pos].style.display = "block";
-    return pos-1;
-});
+    equipo[posj1].style.display = "block";
+    posAj1 = posj1;
+    return posj1+1;
+}
+btnIzqJ2.addEventListener('click', () => correrIzqJ2(equipoj2));
+function correrIzqJ2(equipo){
+    for(i = 0; i<max;i++){
+        equipo[i].style.display = "none";
+    }
+    posj2--;
+    if(posj2<0){
+        posj2 = max-1;
+    }
+    equipo[posj2].style.display = "block";
+    posAj2 = posj2;
+    return posj2+1;
+}
+btnDerJ1.addEventListener('click', () => correrDerJ1(equipoj1));
+function correrDerJ1(equipo){
+    for(i = 0; i<max;i++){
+        equipo[i].style.display = "none";
+    }
+    posj1++;
+    if(posj1>max-1){
+        posj1 = 0;
+    }
+    posAj1 = posj1;
+    equipo[posj1].style.display = "block";
+    console.log(posAj1);
+    return posj1-1;
+}
+btnDerJ2.addEventListener('click', () => correrDerJ2(equipoj2));
+
+function correrDerJ2(equipo){
+    for(i = 0; i<max;i++){
+        equipo[i].style.display = "none";
+    }
+    posj2++;
+    if(posj2>max-1){
+        posj2 = 0;
+    }
+    posAj2 = posj2;
+    equipo[posj2].style.display = "block";
+    return posj2-1;
+}
 //Carrousel equipos fin
 
 let XenLinea = 4;
+let direcionj1;
+
 
 select.addEventListener('click', function(){
-    if(listaEquipos[posA] == equipo1){
-        //TOMA LA IMAGEN DE LAS FICHAS DEL JUGADOR 1
-        fillJugador1 = "./images/icono_insane.jpg";
-        //TOMA LA IMAGEN DE LAS FICHAS DEL JUGADOR 2
-        fillJugador2= "./images/equipo6.png";
+
+    let auxJ1 = equipoj1[posAj1].src;
+    let auxJ2 = equipoj2[posAj2].src;
+    for(let i = 0; i<equipoj1.length; i++){
+        if(equipoj1[i].src == auxJ1){
+            console.log("aa");
+            fillJugador1 = auxJ1;
+            console.log(fillJugador1);
+        }
     }
-    if(listaEquipos[posA] == equipo2){
-        fillJugador1 = "./images/equipo3.png";
-        fillJugador2 = "./images/equipo4.png";
-    }
-    if(listaEquipos[posA] == equipo3){
-        fillJugador1 = "./images/icono_insane.jpg";
-        fillJugador2 = "./images/mclovin.jpg";
+
+    for(let i = 0; i<equipoj2.length; i++){
+        if(equipoj2[i].src == auxJ2){
+            console.log("aa");
+            fillJugador2 = auxJ2;
+            console.log(fillJugador2);
+        }
     }
 
     for(let i = 0; i<opciones.length; i++){
@@ -596,14 +657,20 @@ select.addEventListener('click', function(){
 
     btnJugar.style.display = "block";
     bntConfig.style.display = "block";
-    select.style.display = "none";
-    btnDer.style.display = "none";
-    btnIzq.style.display = "none";
-    
-    for(i = 0; i<listaEquipos.length;i++){
-        listaEquipos[i].style.display = "none";
+    titulo.style.display = "none";
+    config.style.display = "none";
+    for(let i = 0; i<opciones.length; i++){
+        opciones[i].style.display = "none";
     }
-    return pos = 0;
+    for(i = 0; i<equipoj1.length;i++){
+        equipoj1[i].style.display = "none";
+    }
+    for(i = 0; i<equipoj2.length;i++){
+        equipoj2[i].style.display = "none";
+    }
+    for(let i = 0; i<txt.length; i++){
+        txt[i].style.display = "none";
+    }
 });
 
 let cantFichas = 21; //(POR JUGADOR)
@@ -643,13 +710,9 @@ function crearFichas (jugador, fill) {
 
 function dibujarElementos() {
     //BORRA EL CANVAS POR COMPLETO
-    let img = new Image();
-    img.src = "./images/8385556.jpg"
-    img.onload = function () {
-        context.drawImage(img, 0, 0);
-    }
+    
     //context.fillStyle = "#ffffff";
-    //context.fillRect(0, 0, width, height);
+    context.fillRect(0, 0, width, height);
     //DIBUJA EL TABLERO
     tablero.draw();
 
@@ -674,7 +737,10 @@ function dibujarElementos() {
     context.textAlign ="center"
     context.fillText(jugador1, 150, 80);
     context.fillText(jugador2, width-150, 80);
+
 }
+
+
 
 function restart() {
     let fichasJugador1 = [];

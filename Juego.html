@@ -66,23 +66,40 @@
             <div class="contenedor-pantalla">
                 <div class="inicio-juego">
                     <img src="./images/portadajuego2.png" alt="">
-                    <button id="jugar" class="menu-juego">JUGAR</button>
-                    <button id="config" class="menu-juego">CONFIGURACION</button>
-                    <button id="flecha-izq"><</button>
-                    <img src="./images/equipo1.png" alt="" id="equipo1" class="equipos configuracion-juego">
-                    <img src="./images/equipo2.png" alt="" id="equipo2" class="equipos configuracion-juego">
-                    <img src="./images/equipo3.png" alt="" id="equipo3" class="equipos configuracion-juego">
-                    <p class="tamanio">elija tamanio</p>
-                    <input type="radio" name="X" id="check1" value="4">
-                    <input type="radio" name="X" id="check2" value="5">
-                    <input type="radio" name="X" id="check3" value="6">
-                    <!--<img src="./images/equipo4.png" alt="" id="equipo4" class="equipos configuracion-juego">-->
-                    <!--<img src="./images/equipo5.png" alt="" id="equipo5" class="equipos configuracion-juego">-->
-                    <!--<img src="./images/equipo6.png" alt="" id="equipo6" class="equipos configuracion-juego">-->
-                    <button id="flecha-der" class="configuracion-juego">></button>
-                    <button id="seleccionar" class="configuracion-juego">SELECCIONAR</button>
+                    <div class="configuracion">
+                    <button id="jugar" class="menu-juego jugar">JUGAR</button>
+                    <button id="config" class="menu-juego config">CONFIGURACION</button>
+                        <div class="select-equipos">
+                            <button id="flecha-izqJ1"><</button>
+                            <img src="./images/equipo1.png" alt="" id="equipo1J1" class="equipo">
+                            <img src="./images/equipo2.png" alt="" id="equipo2J1" class="equipo">
+                            <img src="./images/equipo3.png" alt="" id="equipo3J1" class="equipo">
+                            <img src="./images/equipo4.png" alt="" id="equipo4J1" class="equipo">
+                            <img src="./images/equipo5.png" alt="" id="equipo5J1" class="equipo">
+                            <img src="./images/equipo6.png" alt="" id="equipo6J1" class="equipo">
+                            <button id="flecha-derJ1" class="">></button>
+                            <button id="flecha-izqJ2"><</button>
+                            <img src="./images/equipo1.png" alt="" id="equipo1J2" class="equipo">
+                            <img src="./images/equipo2.png" alt="" id="equipo2J2" class="equipo">
+                            <img src="./images/equipo3.png" alt="" id="equipo3J2" class="equipo">
+                            <img src="./images/equipo4.png" alt="" id="equipo4J2" class="equipo">
+                            <img src="./images/equipo5.png" alt="" id="equipo5J2" class="equipo">
+                            <img src="./images/equipo6.png" alt="" id="equipo6J2" class="equipo">
+                            <button id="flecha-derJ2" class="btn-der">></button>
+                        </div>
+                        <p class="cantidad">ELIJA UN PUTA CANTIDAD</p>
+                        <div class="select-tamanio">
+                            <input type="radio" name="X" id="check1" value="4" class="opt"><p class="texto">4 en linea</p>
+                            <input type="radio" name="X" id="check2" value="5" class="opt"><p class="texto">5 en linea</p>
+                            <input type="radio" name="X" id="check3" value="6" class="opt"><p class="texto">6 en linea</p>
+                            <input type="radio" name="X" id="check4" value="7" class="opt"><p class="texto">7 en linea</p>
+                        </div>
+                        <button id="seleccionar">SELECCIONAR</button>
+                    </div>
                 </div>
-                <canvas width="1300px" height="800" id="canvas"></canvas>
+                <canvas width="1300px" height="800" id="canvas">
+                </canvas>
+                
             </div>
         </div>
         <div class="contenedor-informacion">

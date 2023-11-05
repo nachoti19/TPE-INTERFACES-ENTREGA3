@@ -1135,19 +1135,79 @@ canvas{
 
 .menu-juego{
     display: block;
+    position: absolute;
+}
+
+.jugar{
+    top: 83%;
+}
+
+.config{
+    top: 90%;
 }
 
 .contenedor-pantalla button{
-    background-color: #9a9a9a; /* Green */
-    border: none;
+    border-style: solid;
+    background-color: #16161686;
     color: white;
+    border-color: #702626;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
+    margin: 15px;
 }
 
+.configuracion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select-equipos{
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 80%;
+}
+
+.select-equipos img{
+    display: none;
+}
+
+#seleccionar{
+    display: none;
+    position: absolute;
+    top: 104%;
+}
+
+.cantidad{
+    display: none;
+    position: absolute;
+    top: 95%;
+}
+
+.select-tamanio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    top: 98%;
+}
+
+.texto{
+    display: none;
+}
+
+.opt{
+    display: none;
+    margin-left: 10px;
+}
+
+/*
 .inicio-juego #jugar{
     position: absolute;
     left: 47%;
@@ -1193,7 +1253,8 @@ canvas{
     top: 104%;
     display: none;
 }
-
+/*EQUIPO1*/
+/*
 .inicio-juego #flecha-izq{
     position: absolute;
     left: 35%;
@@ -1201,19 +1262,42 @@ canvas{
     display: none;
 }
 
-img.equipos{
+img.equiposj1{
     position: absolute;
     left: 40%;
     top: 80%;
     display: none;
 }
 
+
 .inicio-juego #flecha-der{
     position: absolute;
-    left: 62%;
+    left: 48%;
     top: 83%;
     display: none;
 }
+
+/*EQUIPO2*/
+/*
+.inicio-juego .btn-izq{
+    position: absolute;
+    left: 53%;
+    top: 83%;
+}
+
+img.equiposj2{
+    position: absolute;
+    left: 69%;
+    top: 80%;
+    display: block;
+}
+
+.inicio-juego .btn-der{
+    position: absolute;
+    left: 63%;
+    top: 83%;
+}
+*/
 
 .pantalla-juego {
     background-image: url("images/juego.png");
