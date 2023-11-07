@@ -362,7 +362,7 @@ class Tablero {
 
         dibujarElementos();
 
-        context.fillStyle="#ffffff";
+        context.fillStyle="grey";
         context.fillRect(0, 0, width, 100);
         
         context.font = "60px Arial";
@@ -371,7 +371,7 @@ class Tablero {
         context.fillText("¡Ha ganado " + ficha.getJugador() + "!", width/2, 80);
 
         clearInterval(temporizador);
-
+        playSound('./sounds/victory.mp3');
         return;
     }
 
@@ -388,6 +388,7 @@ class Tablero {
         context.textAlign ="center"
         context.fillStyle ="#000000";
         context.fillText("Se acabó el tiempo", width/2, 80);
+        playSound('./sounds/sad-troumpet.mp3');
     }
 
     vaciarTablero() {
@@ -401,8 +402,10 @@ class Tablero {
 
 }
 
-
-
+function playSound(audioName){
+    let audio = new Audio(audioName);
+    audio.play();
+}
 
 
 class Ficha {
