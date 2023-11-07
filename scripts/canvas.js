@@ -1,10 +1,13 @@
 class Tablero {
     
-    constructor (columnas, numeroGanador) {
-        this.columnas = columnas;
+    constructor (numeroGanador) {
+        this.columnas = 7;
+        this.filas = 6;
         this.numeroGanador = numeroGanador;
+
         if (numeroGanador > 4) {
             this.columnas += this.numeroGanador - 4;
+            this.filas += this.numeroGanador - 4;
         }
 
         //MATRIZ QUE CONTIENE LAS FICHAS
@@ -13,7 +16,7 @@ class Tablero {
         this.coordenadasCasillas = new Array();
 
         //SE LLENAN LOS ARREGLOS CON NULOS
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < this.filas; i++) {
             let fila = [];
             for (let j = 0; j < this.columnas; j++) {
                 fila.push(null);
@@ -21,7 +24,7 @@ class Tablero {
             this.casillas.push(fila);
         }
 
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < this.filas; i++) {
             let fila = [];
             for (let j = 0; j < this.columnas; j++) {
                 fila.push(null);
@@ -32,9 +35,9 @@ class Tablero {
         //TABLERO PLANO
         this.fill = "#161616";
         this.anchoTablero = 60 * this.columnas;
-        this.altoTablero = canvas.height-canvas.height/2 - 16;
+        this.altoTablero = 60 * this.filas;
         this.coordXInicio = canvas.width/2 - this.anchoTablero/2
-        this.coordYInicio = canvas.height/4;
+        this.coordYInicio = canvas.height/4 - 30;
     }
 
     getCasillas () {
@@ -48,15 +51,16 @@ class Tablero {
     draw () {
         context.fillStyle = this.fill;
         context.fillRect(this.coordXInicio, this.coordYInicio, this.anchoTablero, this.altoTablero);
-        context.fillRect(this.coordXInicio-10, this.coordYInicio, 10, this.altoTablero)
+        context.fillRect(this.coordXInicio-10, this.coordYInicio, 10, this.altoTablero);
+        context.fillRect(this.coordXInicio-10, this.coordYInicio-10, this.anchoTablero + 10, this.altoTablero)
 
         //TAMAÑO Y COORDENADAS DE LOS HUECOS DEL TABLERO
         let radio = 25;
         let X = this.coordXInicio + 25;
-        let Y = this.coordYInicio + 40;
+        let Y = this.coordYInicio + 25;
         let triangulos = false;
 
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < this.filas; i++) {
             //HUECOS
             for (j = 0; j < this.columnas; j++) {
                 //SI NO SE DIBUJARON TODOS LOS TRIÁNGULOS, SE DIBUJAN
@@ -74,7 +78,7 @@ class Tablero {
                     //SE DIBUJA EL HUECO EN EL TABLERO
                     context.beginPath();
                     context.arc(X, Y, radio, 0, 2 * Math.PI);
-                    context.fillStyle = "#ffffff";
+                    context.fillStyle = "grey";
                     context.fill();
                 
                 //SE GUARDA LAS COORDENADAS DE ESE HUECO EN EL ARREGLO
@@ -91,7 +95,7 @@ class Tablero {
     comprobarEntrada(ficha) {
         //"HITBOX" DE LA PRIMER ENTRADA
         let entradaLeft = this.coordXInicio;
-        let entradaTop = this.coordYInicio - 52;
+        let entradaTop = this.coordYInicio - 62;
         let entradaWidth = 47;
         let entradaHeight =  50;
 
@@ -109,7 +113,7 @@ class Tablero {
 
     colocarFicha (columna, ficha) {
         //RECORRE LA COLUMNA SELECCIONADA DE ABAJO PARA ARRIBA
-        for (let fila = 5; fila >= 0; fila--) {
+        for (let fila = this.filas-1; fila >= 0; fila--) {
             //SI LA CASILLA ESTÁ VACÍA
             if (this.casillas[fila][columna] == null) {
                 //SE GUARDA LA FICHA EN ESA CASILLA
@@ -193,7 +197,7 @@ class Tablero {
     
         //TERCERO: DIAGONAL ABAJO-DERECHA
         while(contadorDiagonal2 <= this.numeroGanador && !finBusqueda) {
-            if ((fila+1 < 6 && columna+1 < this.columnas) &&
+            if ((fila+1 < this.filas && columna+1 < this.columnas) &&
                 (this.casillas[fila+1][columna+1] != null) &&
                 (ficha.getJugador() == this.casillas[fila+1][columna+1].getJugador())
                 ) {
@@ -218,7 +222,7 @@ class Tablero {
     
         //CUARTO: RECTA-VERTICAL
         while(contadorRectaVertical <= this.numeroGanador && !finBusqueda) {
-            if ((fila+1 < 6) &&
+            if ((fila+1 < this.filas) &&
                 (this.casillas[fila+1][columna] != null) &&
                 (ficha.getJugador() == this.casillas[fila+1][columna].getJugador())
                 ) {
@@ -230,7 +234,6 @@ class Tablero {
             else finBusqueda = true;
         }
         if (contadorRectaVertical >= this.numeroGanador) {
-            console.log("ha ganao");
             this.winner(this.casillas[fila][columna]);
             return;
         }
@@ -242,7 +245,7 @@ class Tablero {
     
         //QUINTO: DIAGONAL ABAJO-IZQUIERDA
         while(contadorDiagonal1 <= this.numeroGanador && !finBusqueda) {
-            if ((fila + 1 < 6 && columna - 1 >= 0) &&
+            if ((fila + 1 < this.filas && columna - 1 >= 0) &&
                 (this.casillas[fila+1][columna-1] != null) &&
                 (ficha.getJugador() == this.casillas[fila+1][columna-1].getJugador())
                 ) {
@@ -338,14 +341,13 @@ class Tablero {
     }
 
     winner (ficha) {
-        let fillFicha = ficha.getFill();
-        let i = 0;
+        let imageFicha = ficha.getImage();
 
         //CAMBIA EL COLOR DE LAS FICHAS DENTRO DEL TABLERO
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < this.filas; i++) {
             for (let j = 0; j < this.columnas; j++) {
                 if (this.casillas[i][j] != null) {
-                    if (this.casillas[i][j].getJugador() != ficha.getJugador()) this.casillas[i][j].setFill("#d9d9d9");
+                    if (this.casillas[i][j].getJugador() != ficha.getJugador()) this.casillas[i][j].setImage("./images/fillGris.png");
                 }
             }
         }
@@ -353,24 +355,44 @@ class Tablero {
         //FICHAS QUE ESTÁN FUERA DEL TABLERO SE VUELVEN GRISES Y DEJAN DE SER ARRASTRABLES
         for (let i = 0; i < arregloFichas.length; i++) {
             if (!arregloFichas[i].isEnTablero()) {
-                arregloFichas[i].setFill("#d9d9d9");
+                arregloFichas[i].setImage("./images/fillGris.png");
                 arregloFichas[i].setArrastrable(false);
             }
         }
 
         dibujarElementos();
+
+        context.fillStyle="#ffffff";
+        context.fillRect(0, 0, width, 100);
         
         context.font = "60px Arial";
         context.textAlign ="center"        
         context.fillStyle ="green";
-        context.fillText("¡Ha ganado " + ficha.getJugador() + "!", width/2, 100);
+        context.fillText("¡Ha ganado " + ficha.getJugador() + "!", width/2, 80);
+
+        clearInterval(temporizador);
 
         return;
     }
 
+    tie() {
+        //LAS FICHAS DEJAN DE SER ARRASTRABLES
+        for (let i = 0; i < arregloFichas.length; i++) {
+            arregloFichas[i].setImage("./images/fillGris.png");
+            arregloFichas[i].setArrastrable(false);
+        }
+        isDragging = false;
+        dibujarElementos();
+        
+        context.font = "60px Arial";
+        context.textAlign ="center"
+        context.fillStyle ="#000000";
+        context.fillText("Se acabó el tiempo", width/2, 80);
+    }
+
     vaciarTablero() {
         //SE VUELVE A LLENAR DE NULOS EL ARREGLO DE CASILLAS
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < this.filas; i++) {
             for (let j = 0; j < this.columnas; j++) {
                 this.casillas[i][j] = null;
             }
@@ -378,6 +400,10 @@ class Tablero {
     }
 
 }
+
+
+
+
 
 class Ficha {
 
@@ -420,6 +446,14 @@ class Ficha {
 
     getFill () {
         return this.fill;
+    }
+
+    setImage(image) {
+        this.image.src = image;
+    }
+
+    getImage() {
+        return this.image.src;
     }
 
     isArrastrable () {
@@ -466,6 +500,47 @@ class Ficha {
 
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //CANVAS Y CONTEXT
 const canvas = document.getElementById("canvas");
 const context = canvas.getContext("2d");
@@ -480,11 +555,14 @@ let fillJugador2;
 let tablero;
 let jugador1 = "Jugador 1";
 let jugador2 = "Jugador 2";
+let temporizador;
+let tiempo;
+
 
 btnJugar.addEventListener('click', function(){
     //SI LAS OPCIONES ESTÁN VACÍAS
     if(fillJugador1 == null && fillJugador2 == null) {
-        tablero = new Tablero(7, 4); //<------------------------------------------------------------------------------
+        tablero = new Tablero(4);
         fillJugador1 = "./images/equipo1.png";
         crearFichas(jugador1, fillJugador1);
         posicionX = width - 80 * 2.65
@@ -494,7 +572,7 @@ btnJugar.addEventListener('click', function(){
     }
     //SI NO ESTÁN VACÍAS
     else {
-        tablero = new Tablero(7, XenLinea); //<------------------------------------------------------------------------------
+        tablero = new Tablero(XenLinea);
         crearFichas(jugador1, fillJugador1);
         posicionX = width - 80 * 2.65
         //CREA FICHA JUGAR 2
@@ -502,6 +580,10 @@ btnJugar.addEventListener('click', function(){
     }
     canvas.style.display = "block";
     PantallaJuego.style.display = "none";
+
+    
+    iniciarTemporizador();
+
 });
 
 //tomo los botones en sus respectivas varibles
@@ -532,9 +614,9 @@ let opcion2 = document.querySelector('#check2');
 let opcion3 = document.querySelector('#check3');
 let opcion4 = document.querySelector('#check4');
 let txt = document.querySelectorAll("p.texto");
-//->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 let config = document.querySelector('.select-equipos');
 let opciones = [opcion1, opcion2, opcion3, opcion4];
+
 //cambio los displays para cambiar de "pestaña"
 bntConfig.addEventListener('click', function(){
     btnJugar.style.display = "none";
@@ -653,12 +735,11 @@ select.addEventListener('click', function(){
         }
     }
 
-    //tablero = new Tablero(7, XenLinea); //<------------------------------------------------------------------------------
-
     btnJugar.style.display = "block";
     bntConfig.style.display = "block";
     titulo.style.display = "none";
     config.style.display = "none";
+    select.style.display = "none";
     for(let i = 0; i<opciones.length; i++){
         opciones[i].style.display = "none";
     }
@@ -710,11 +791,19 @@ function crearFichas (jugador, fill) {
 
 function dibujarElementos() {
     //BORRA EL CANVAS POR COMPLETO
-    
-    //context.fillStyle = "#ffffff";
+    context.fillStyle = "grey";
     context.fillRect(0, 0, width, height);
+
     //DIBUJA EL TABLERO
     tablero.draw();
+
+    //DIBUJA EL TEMPORIZADOR
+    if (tiempo > 0) {
+        context.fillStyle = "#000000"
+        context.font = "40px Arial";
+        context.textAlign ="center"
+        context.fillText(tiempo, width/2, 80);
+    }
 
     //POR CADA FICHA DEL ARREGLO
     for (let ficha of arregloFichas) {
@@ -724,11 +813,11 @@ function dibujarElementos() {
 
     //BOTON REINICIAR
     context.fillStyle = "#161616";
-    context.fillRect(width/2-40, 700, 80, 35);
+    context.fillRect(width/2-40, 750, 80, 35);
     context.fillStyle = "#ffffff"
     context.font = "18px Arial";
     context.textAlign ="center"
-    context.fillText("Reiniciar", width/2, 725);
+    context.fillText("Reiniciar", width/2, 775);
 
 
     //ESCRIBE LOS JUGADORES SOBRE SUS FICHAS
@@ -740,7 +829,22 @@ function dibujarElementos() {
 
 }
 
+function iniciarTemporizador() {
+    tiempo = 60 * 3;
+    temporizador = setInterval(function() {
+        tiempo--;
 
+        //DIBUJA EL TIEMPO ARRIBA DEL TABLERO
+        dibujarElementos();
+
+        //SI EL TIEMPO LLEGA A CERO, CORTA
+        if (tiempo <= 0) {
+            clearInterval(temporizador);
+            tablero.tie();
+        }
+
+    }, 1000);
+}
 
 function restart() {
     let fichasJugador1 = [];
@@ -758,13 +862,11 @@ function restart() {
         else fichasJugador2.push(ficha);
     }
 
-    //console.log("jugador 1: " + fichasJugador1.length + " jugador 2: " + fichasJugador2.length);
-
     //DIBUJA LAS FICHAS DEL JUGADOR UNO
     let contador = 0;
     for (let fichaJ1 of fichasJugador1) {
         if (contador < 7) {
-            fichaJ1.setFill(fillJugador1);
+            fichaJ1.setImage(fillJugador1);
             fichaJ1.setPosicionX(X);
             fichaJ1.setPosicionY(Y);
             contador++;
@@ -773,7 +875,7 @@ function restart() {
             contador = 1;
             X += 65;
             Y = posicionY;
-            fichaJ1.setFill(fillJugador1);
+            fichaJ1.setImage(fillJugador1);
             fichaJ1.setPosicionX(X);
             fichaJ1.setPosicionY(Y);
         }
@@ -786,7 +888,7 @@ function restart() {
     //DIBUJA LAS FICHAS DEL JUGADOR DOS
     for (let fichaJ2 of fichasJugador2) {
         if (contador < 7) {
-            fichaJ2.setFill(fillJugador2);
+            fichaJ2.setImage(fillJugador2);
             fichaJ2.setPosicionX(X);
             fichaJ2.setPosicionY(Y);
             contador++;
@@ -795,13 +897,15 @@ function restart() {
             contador = 1;
             X += 65;
             Y = posicionY;
-            fichaJ2.setFill(fillJugador2);
+            fichaJ2.setImage(fillJugador2);
             fichaJ2.setPosicionX(X);
             fichaJ2.setPosicionY(Y);
         }
         Y += 60;
     }
 
+    clearInterval(temporizador);
+    iniciarTemporizador();
     dibujarElementos();
 
 }
@@ -820,7 +924,7 @@ let mouseDown = function(event) {
     startX = parseInt(event.clientX) - rect.left;
     startY = parseInt(event.clientY) - rect.top;
 
-    if (startX > width/2-40 && startY > 700 &&
+    if (startX > width/2-40 && startY > 750 &&
         startX < width/2+40 && startY > 35) restart();
 
     //POR CADA FICHA GUARDADA EN EL ARREGLO DE FICHAS...

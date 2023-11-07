@@ -65,10 +65,14 @@
             <h3>Inicio > Biblioteca > Cuatro en línea (Nascar Edition)</h3>
             <div class="contenedor-pantalla">
                 <div class="inicio-juego">
-                    <img src="./images/portadajuego2.png" alt="">
+                    <img src="./images/portadaoficial.png" alt="">
                     <div class="configuracion">
                     <button id="jugar" class="menu-juego jugar">JUGAR</button>
                     <button id="config" class="menu-juego config">CONFIGURACION</button>
+                        <div class="jugadores">
+                        <h1 class="jugadorN1">Jugador1</h1>
+                        <h1 class="jugadorN2">Jugador2</h1>
+                        </div>
                         <div class="select-equipos">
                             <button id="flecha-izqJ1"><</button>
                             <img src="./images/equipo1.png" alt="" id="equipo1J1" class="equipo">
@@ -87,19 +91,34 @@
                             <img src="./images/equipo6.png" alt="" id="equipo6J2" class="equipo">
                             <button id="flecha-derJ2" class="btn-der">></button>
                         </div>
-                        <p class="cantidad">ELIJA UN PUTA CANTIDAD</p>
-                        <div class="select-tamanio">
-                            <input type="radio" name="X" id="check1" value="4" class="opt"><p class="texto">4 en linea</p>
-                            <input type="radio" name="X" id="check2" value="5" class="opt"><p class="texto">5 en linea</p>
-                            <input type="radio" name="X" id="check3" value="6" class="opt"><p class="texto">6 en linea</p>
-                            <input type="radio" name="X" id="check4" value="7" class="opt"><p class="texto">7 en linea</p>
+                        <div class="bottom-game">
+                            <h2 class="cantidad">ELIJA EL TAMAÑO DEL TABLERO</h2>
+                            <div class="select-tamanio">
+                                <input type="radio" name="X" id="check1" value="4" class="opt"><p class="texto">4 en linea</p>
+                                <input type="radio" name="X" id="check2" value="5" class="opt"><p class="texto">5 en linea</p>
+                                <input type="radio" name="X" id="check3" value="6" class="opt"><p class="texto">6 en linea</p>
+                                <input type="radio" name="X" id="check4" value="7" class="opt"><p class="texto">7 en linea</p>
+                            </div>
+                            <button id="seleccionar">SELECCIONAR</button>
                         </div>
-                        <button id="seleccionar">SELECCIONAR</button>
+                    </div>
+                </div>
+                <div class="contenedor-controles">
+                    <div class="imagen-juego"></div>
+                    <div class="controles-juego">
+                        <h2>Controles</h2>
+                        <div class="control">
+                            <div class="click-izquierdo"></div>
+                            <p>Seleccionar ficha</p>
+                        </div>
+                        <div class="control">
+                            <div class="click-derecho"></div>
+                            <p>Arrastrar ficha</p>
+                        </div>
                     </div>
                 </div>
                 <canvas width="1300px" height="800" id="canvas">
                 </canvas>
-                
             </div>
         </div>
         <div class="contenedor-informacion">

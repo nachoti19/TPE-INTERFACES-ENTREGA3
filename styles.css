@@ -1122,15 +1122,17 @@ footer .soporte ul li,
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 }
 
 canvas{
     display: none;
+    margin-right: 71px;
 }
 
 .inicio-juego{
     display: block;
+    margin-right: 71px;
 }
 
 .menu-juego{
@@ -1139,16 +1141,16 @@ canvas{
 }
 
 .jugar{
-    top: 83%;
+    top: 75%;
 }
 
 .config{
-    top: 90%;
+    top: 82%;
 }
 
 .contenedor-pantalla button{
     border-style: solid;
-    background-color: #16161686;
+    background-color: #161616;
     color: white;
     border-color: #702626;
     padding: 15px 32px;
@@ -1159,10 +1161,34 @@ canvas{
     margin: 15px;
 }
 
+.jugadores{
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    top: 63%;
+}
+
+.jugadorN1{
+    display: none;
+}
+
+.jugadorN2{
+    display: none;
+    margin-left: 200px;
+}
+
 .configuracion{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.bottom-game{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .select-equipos{
@@ -1171,7 +1197,7 @@ canvas{
     justify-content: space-between;
     align-items: center;
     position: absolute;
-    top: 80%;
+    top: 68%;
 }
 
 .select-equipos img{
@@ -1181,13 +1207,13 @@ canvas{
 #seleccionar{
     display: none;
     position: absolute;
-    top: 104%;
+    top: 94%;
 }
 
 .cantidad{
     display: none;
     position: absolute;
-    top: 95%;
+    top: 84%;
 }
 
 .select-tamanio{
@@ -1195,7 +1221,7 @@ canvas{
     flex-direction: row;
     align-items: center;
     position: absolute;
-    top: 98%;
+    top: 89%;
 }
 
 .texto{
@@ -1204,8 +1230,12 @@ canvas{
 
 .opt{
     display: none;
-    margin-left: 10px;
+    margin-left: 20px;
+    width: 20px;
+    height: 20px;
 }
+
+
 
 /*
 .inicio-juego #jugar{
@@ -1336,7 +1366,7 @@ img.equiposj2{
 }
 
 .contenedor-juego h2 {
-    font-size: 30px;
+    font-size: 20px;
 }
 
 .control {
@@ -1346,7 +1376,7 @@ img.equiposj2{
     justify-content: left;
     height: auto;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 45px;
 }
 
 .control p {
@@ -1359,18 +1389,21 @@ img.equiposj2{
     background-size: cover;
     background-repeat: no-repeat;
     width: 20%;
-    height: 100px;
     margin-left: 40px;
     margin-right: 10px;
 }
 
 .click-izquierdo {
     background-image: url("images/icono_click_izquierdo.png");
+    height: 100px;
 
 }
 
 .click-derecho {
-    background-image: url("images/icono_click_derecho.png");
+    background-image: url("images/flechas.png");
+    height: 235%;
+    width: 23%;
+
 
 }
 
@@ -1942,9 +1975,7 @@ label>span {
     }
 }
 
-#canvas {
-    margin: auto;
-}
+
 
 /* ANIMACIÓN CREAR CUENTA */
 .animacion {
