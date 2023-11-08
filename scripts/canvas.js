@@ -367,7 +367,7 @@ class Tablero {
         
         context.font = "60px Arial";
         context.textAlign ="center"        
-        context.fillStyle ="green";
+        context.fillStyle ="black";
         context.fillText("¡Ha ganado " + ficha.getJugador() + "!", width/2, 80);
 
         clearInterval(temporizador);
